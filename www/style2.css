@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: relative;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to top, brown, cornsilk);;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  box-sizing: border-box;
+  width: 15em;
+  height: 3em;
+  font-size: 20px;
+  border-radius: 0.5em;
+  margin: 0.5em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  color: blue;
+  font-family: sans-serif;
+  text-transform: capitalize;
+  line-height: 3em;
+  transition: 0.3s;
+  cursor: pointer; display: flex;
+}
+
+ul li:nth-child(odd) {
+  background: linear-gradient(to right, green, tomato);
+  text-align: center;
+  color: blue;
+  padding-left: 10%;
+  transform: perspective(500px) rotateY(45deg);
+}
+
+ul li:nth-child(even) {
+  background: linear-gradient(to left, orange, tomato);
+  text-align: center;
+  padding-right: 10%;
+  transform: perspective(500px) rotateY(-45deg);
+}
+
+ul li:nth-child(odd):hover {
+  transform: perspective(200px) rotateY(45deg);
+  padding-left: 5%;
+}
+
+ul li:nth-child(even):hover {
+  transform: perspective(200px) rotateY(-45deg);
+  padding-left: 5%;
+}
+img {
+	outline: 1;
+	border-color:green;
+  max-width: 35%;
+  margin-top: -15px;
+  margin-left: 34%;
+  margin-bottom: 15px;
+  backface-visibility: hidden;
+  vertical-align: top;
+  border-radius: 5px; align-items: center;
+}

@@ -1,0 +1,23 @@
+[07-Jan-2025 22:24:46 UTC] PHP Warning:  Undefined variable $update in /home/designsa/wish.designsandsystems.com.ng/fetch_me.php on line 72
+[07-Jan-2025 22:24:46 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/designsa/wish.designsandsystems.com.ng/fetch_me.php:72
+Stack trace:
+#0 /home/designsa/wish.designsandsystems.com.ng/fetch_me.php(72): mysqli_query()
+#1 {main}
+  thrown in /home/designsa/wish.designsandsystems.com.ng/fetch_me.php on line 72
+[07-Jan-2025 22:24:46 UTC] PHP Warning:  Undefined array key "quadbanktransID " in /home/designsa/wish.designsandsystems.com.ng/quadpayfetch.php on line 8
+[08-Jan-2025 01:49:42 UTC] PHP Warning:  Attempt to read property "full_name" on null in /home/designsa/wish.designsandsystems.com.ng/Testdirectdebit.php on line 42
+[08-Jan-2025 01:49:42 UTC] PHP Warning:  Attempt to read property "bank_name" on null in /home/designsa/wish.designsandsystems.com.ng/Testdirectdebit.php on line 43
+[08-Jan-2025 01:49:45 UTC] PHP Warning:  Attempt to read property "data" on array in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 7
+[08-Jan-2025 01:49:45 UTC] PHP Warning:  Attempt to read property "tx_ref" on null in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 7
+[08-Jan-2025 01:49:45 UTC] PHP Warning:  Attempt to read property "event" on array in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 8
+[08-Jan-2025 01:49:45 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "type" in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 8
+[08-Jan-2025 03:22:18 UTC] PHP Warning:  Attempt to read property "data" on array in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 7
+[08-Jan-2025 03:22:18 UTC] PHP Warning:  Attempt to read property "tx_ref" on null in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 7
+[08-Jan-2025 03:22:18 UTC] PHP Warning:  Attempt to read property "event" on array in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 8
+[08-Jan-2025 03:22:18 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "type" in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/designsa/wish.designsandsystems.com.ng/quadpayFLUTERupdate.php on line 8

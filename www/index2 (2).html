@@ -1,0 +1,1023 @@
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+    <meta http-equiv="refresh" content="300">
+	<link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script src="js/app.js"></script>
+	<script src="jquery.min.js"></script>
+    <script type="text/javascript" src="geturi.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css">
+  <script src="popper.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="style1.css" />
+	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
+	<script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"> </script>
+	
+	 <script src="https://js.paystack.co/v1/inline.js"></script>
+<SCRIPT language=Javascript>
+			  function isNumberKey(evt)
+			  {
+				 var charCode = (evt.which) ? evt.which : event.keyCode
+				 if (charCode > 31 && (charCode < 48 || charCode > 57))
+					return false;
+
+				 return true;
+			  }
+			 
+				
+		</SCRIPT>
+		<SCRIPT>
+		
+		</SCRIPT>
+	<style>	
+	.tableth1 {
+  color: Blue;font-size: 12px;
+ 
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("img_nature.jpg");
+
+  /* Control the height of the image */
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.tableths {
+  color: Black;font-size: 10px;
+ border: 1px solid #555;
+ width:10px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+ 
+.tableth {
+  color: Black;font-size: 12px;
+ border: 1px solid grey;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+ 	.bottom-left {
+  position: absolute;
+  
+  left: 16px;
+  background: pink;
+  background: pink; /* Black see-through */
+  color: #f1f1f1;
+  color: white;
+  font-size: 14px;
+  border: 1px solid #555;
+  border-color:brown;
+  border-radius: 30%;
+}
+.bottom-center {
+  position: fixed;
+  bottom: 10px;
+  left: 40%;
+  background: pink;
+  background: orange; /* Black see-through */
+  color: blue;
+  font-size: 18px;
+  border: 1px solid #555;
+  border-color:pink;
+  border-radius: 10%;
+}
+</style>		
+	
+</head>
+
+<body>	
+    <div>
+       
+        <h1>WISHVILLE</h1>		
+        <div class="flex-container" style="
+  position: relative;
+  background: #155;
+  background: #e8d1c1; /* Black see-through */
+  color: #96a8d4;
+  color: Black;
+  font-size: 14px;
+  border: 1px solid #555;
+  border-color:pink;
+  border-radius: 5%;">
+        <div href="#main"><span></span><span></span>welcome
+    	</div ><a onclick="fund()" ><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+	  <input type='button' class='btn-success' value="ADD FUND"  data-toggle='modal'  data-target='#fixed_add'> </a><br>
+	  
+	  <span type="hidden" style="font-size:11px;position: relative; font-family:Arial, Helvetica, sans-serif; text-align:left; line-height:17px;color:#000000;"> current USD("$")  price</span><br><n></n>
+	  <span></span><span></span><input  style='position: relative;background-color:lilac;width:100px;height:15px;opacity:2;color:black;'  class="button button-block" value="600" id="dollar" name ="dollar" readonly /><span></span><br>
+	  <span type="" style="font-size:11px; font-family:Arial, Helvetica, sans-serif; text-align:left; line-height:17px;color:#000000;"> GRANDTOTAL</span><br><n></n>
+	  <p id="grandtotal" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
+</div>
+	  <script>
+	  
+	  $(document).ready(function() {
+	      var myemail = decodeURI(getUrlVars()["nemail"]);
+            if (myemail === 'null'||myemail === '0'||myemail === 'undefined'||myemail === '')
+            {//alert(myemail);
+            window.location.replace('login.html');}
+            else{alert(myemail);
+			var myDate = new Date();
+
+			$("#date").val(myDate);
+			$("#ttime").val(myDate);
+            $("#email").val(myemail);
+            //alert(myemail);
+			$("#date").append("<span>" + myDate + "</span>");
+		fetchData();	
+		fetchDataOne();
+		emailcheck();
+			hide2();
+			hide21();
+			
+			}});
+	  
+        function emailcheck(){let email = $("#email").val();
+       
+        if(/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(email)) {
+        alert('WELCOME');
+        }else{//alert('enter valid mail');
+        window.location.replace('login.html');}}  
+	 
+                
+      function fetchDataOne(){
+	   var url = "https://alansmith.com.ng/new/fetchwishvile.php";
+	var myemail = decodeURI(getUrlVars()["nemail"]);
+	//alert(myemail);
+	$.getJSON(url,{myemail:myemail}, function(result) {
+	             $.ajaxSetup({ cache: false });
+                console.log(result);
+                $.each(result, function(i, field) {
+                    var id2 = field.id;
+					var Email = field.Email;
+                    var comment = field.comment;
+                    var uploadedamout = field.file;
+                    var price = field.area1;
+					var status = field.material;
+					var pay_total = field.pay_total;
+					var sub_type = field.sub_type;
+					var Duration = field.duration;
+					var totally = field.totally;
+					var authorization_code = field.authorization_code;
+					var card_bin = field.card_bin;
+					var card_bank = field.card_bank;
+					var card_type = field.card_type;
+					//$("#cardtype").val(autorization_code);
+					var others = field.others;
+                    //var CI = total.toFixed();
+                    $("#galleryq").append(
+
+						"<tr><td class='tableths' style='background-color:#ccedf0;opacity:2;color:black;' id='id2'  name ='id2'>" + id2   + "</td><td class='tableths'>" + comment + "</td><td class='tableths'>" + price + "</td><td class='tableth' style='background-color:#dcdff5;opacity:2;color:black;' id='uploadedamout' class='button button-block'  name ='uploadedamout'> " + uploadedamout  + "</td><td class='tableths'>" + Duration + "</td><td class='tableths'>" + sub_type + "</td><td class='tableths'>" + pay_total + "</td><td  class='tableth'><span></span><span></span><input type='button' style='background-color:palegreen;opacity:2;color:black;' id='submit3' class='btn btn-success btn-sm' id='convert_dollar' name ='convert_dollar'  data-toggle='modal' data-target='#myModal' data-id='" + id2 + "' value='" + others  + "' /><span></span></td><td class='tableth'>" + status  + "</td></tr>");
+						
+						$("#cardtype").append("<option value='"+ authorization_code+"'>" +card_bank+","+card_type+","+card_bin+"</option>");
+						$("#comment_dbase").append("<option value='"+ comment+"'>" +comment+"</option>");
+	
+                });});}          
+                
+    $(document).on("click",".btn-success", function(){
+    var id = $(this).data('id');
+    var naira = $("#ide").val(id); 
+     
+     $.ajax({
+      url : "fetchvalue.php",
+      type : "POST",
+      cache: false,
+      data : {id:id},
+      success:function(data){//alert(data);
+      $("#naira").val(data );
+        //$("#editForm").html(data);
+      }
+    });
+  });
+        function fetchData(){fetchTable();
+         fetchTotal();   
+        }   
+     function fetchTable(){
+         var myemail = decodeURI(getUrlVars()["nemail"]);
+    $.ajax({
+      url  : "fetch_me.php",
+      type : "GET",
+      cache: false,
+      data : {myemail:myemail},
+      success:function(data){
+        $("#gallery").html(data);
+      }
+    });
+  }
+  fetchData();  
+  
+  function fetchTotal(){
+         var myemail = decodeURI(getUrlVars()["nemail"]);
+    $.ajax({
+      url  : "fetchwishvileTotal.php",
+      type : "GET",
+      cache: false,
+      data : {myemail:myemail},
+      success:function(data){
+        $("#grandtotal").html(data);//alert(data);
+      }
+    });
+  }
+  
+   function test(){var pice= $("#pay_amout").val(); 
+   if (pice <100){alert("enter valid TARGET AMOUT");}
+   else{document.getElementById("plan").style.backgroundColor = "black";
+   document.getElementById("plan").style.border = "3px solid yellow";
+   //document.getElementById("plan").innerHTML =5;
+     //input.style.backgroundColor = 'red';  
+     $("#plan").val(5); 
+	var t2 = ($("#pay_amout").val())*100;     
+    var t1 = "AUTO";
+    var duration = document.frmOne.duration.value;
+    //document.body.style.backgroundColor = "black";
+   
+    //confirm(duration+t2)
+    $.ajax({
+      url : "planb.php",
+      type : "POST",
+      cache: false,
+      data : {t1:t1,t2:t2,duration:duration},
+      success:function(data){
+        var t = data; //alert(t);
+        $("#k").val(t);//$("#plan").val(t);
+      }
+    });
+  }}
+                
+	  function convert(){
+	     
+    var dollar = $("#dollar").val();
+    var naira_amout = $("#naira").val();
+    var id = $("#ide").val();
+    let say = "you want to covert:";
+    let say2 = "to USD($) at the rate of:";
+    confirm(say+naira_amout   +say2+dollar)
+    $.ajax({
+      url : "dollarconverter.php",
+      type : "POST",
+      cache: false,
+      data : {dollar:dollar,naira_amout:naira_amout,id:id},
+      success:function(data){alert(data);
+          //document.getElementById("dollar").innerHTML =data;
+        //$("#dollar").html(data);
+        $("#myModal").modal('hide');fetchData();
+      }
+    });
+  }
+  
+  
+   function OnChange(value){fund();
+	 price = document.frmOne.price.value;	 
+	 sqra = document.frmOne.select1.value; 
+	var time = document.frmOne.maturity.value;
+	 $("#plan").val(0); 
+	 document.getElementById("plan").style.backgroundColor = "white";
+	var g=sqra-price;	
+	if (price<100||price>sqra){navigator.vibrate([500]);
+	alert("Please enter AMOUT not less than 100 OR NOT higher than OR EQUAL to Target Amout");
+	
+	 price= document.frmOne.price.value=sqra; 
+	if (price<100||sqra<100)
+	{ price= document.frmOne.price.value=100;
+	 sqra = document.frmOne.select1.value=100;  }
+	}if(time<=1){var rate = 5/100;
+	 total= price * (Math.pow((1 + rate), (time/12)));
+	        var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       
+	       else if(time == '2' ||time=='3' ||time=='4' ){var rate = 10/100;
+	total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       
+	       else if(time == '5' ||time=='6' ){var rate = 15/100;
+	 total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();      
+	        document.getElementById("grandprice").innerHTML ="n"+CI;}
+	        
+	       else if(time == '7' ||time=='8' ||time=='9' ){var rate = 20/100;
+	 total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       
+	       else if(time == '10' ||time=='11' ||time=='12' ){var rate = 25/100;
+	 total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       
+	       else if(time =='24' ){var rate = 35/100;
+	 total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       
+	       else if(time =='36' ){var rate = 45/100;
+	 total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       
+	       else if(time =='48' ){var rate = 50/100;
+	 total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       
+	       else if(time =='60' ){var rate = 70/100;
+	 total = price * (Math.pow((1 + rate), (time/12)));
+	 var CI = total.toFixed();
+	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       OnChange2(value);
+        var samout = $("#samout").val(CI);
+    }	
+
+  
+    
+    
+    
+  
+	
+	function OnChange2(value){//x = document.frmOne.material.value;
+	fund();
+		var duration = document.frmOne.duration.value; 	
+		var price = document.frmOne.price.value;
+		
+		var targetamout = document.frmOne.select1.value; 
+		var rate_pice =price*0.05;
+		var iamout = price+rate_pice;
+//	var pay_amout = iamout/durpay_amoutation; 
+     document.getElementById("plan").style.backgroundColor = "white"; 
+     document.getElementById("addfund").innerHTML  = "AUTO FUND"; 
+     document.getElementById("plan").style.border = "0.5px solid black";
+	$("#plan").val(0);
+	let new_value = targetamout/duration ;
+    let month_value = new_value.toFixed();
+	 $("#pay_amout").val(month_value); 
+	 a = document.frmOne.pay_amout.value; 
+	  
+	 if (duration<6){
+	     if (a<100){
+	navigator.vibrate([1000]);alert("enter MONTHLY AMOUT not less than 100");
+	    a = document.frmOne.pay_amout.value=100;
+	    var targetamout = document.frmOne.select1.value = 100*duration ;
+	}
+	    	//p = targetamout;
+    t = duration;
+    r = 5/100;
+    //a = document.frmOne.pay_amout.value; 
+    d = (1 + r );
+    CI = a * (((Math.pow(d, t))-1)/r);
+    let pay_amout=(CI);
+    let new_pay_amout = pay_amout.toFixed();
+	//var scale = $("#scale").val();
+	
+	$("#pay_total").val(new_pay_amout );
+	}
+	else{ t = duration;
+    r = 10/100;
+    if (a<100){
+	navigator.vibrate([1000]);alert("enter MONTHLY AMOUT not less than 100");
+	    a = document.frmOne.pay_amout.value=100;
+	    var targetamout = document.frmOne.select1.value = 100*duration ;
+	}
+    d = (1 + r );
+    CI = a * (((Math.pow(d, t))-1)/r);
+    let pay_amout=(CI);
+    let new_pay_amout = pay_amout.toFixed();
+	//var scale = $("#scale").val();
+	$("#pay_total").val(new_pay_amout );}
+	 
+	    
+	}
+	
+	function choice(){//document.getElementById('comment').style.display ='none';
+	var purpose = $("#comment_dbase").val();
+	$("#comment").val(purpose);}
+	
+	 function hide1(){var form = document.getElementById('paylater');
+	 document.getElementById('key1a').style.display ='none';
+	 document.getElementById('fix').style.display ='none';
+	 document.getElementById('submita').style.display ='none';
+			   if(form.style.display ==='none'){form.style.display ='block';}else{form.style.display ='none';}}
+	
+	function hide2(){var form = document.getElementById('paylater');
+	document.frmOne.duration.value="0";
+	 	   if(form.style.display ==='none'){form.style.display ='block';}else{form.style.display ='none';}
+	 document.getElementById('key1a').style.display ='block'; 
+	  document.getElementById('key1b').style.display ='none';
+	  document.getElementById('key3').style.display ='none';
+	  document.getElementById('fix').style.display ='none';
+	  document.getElementById('grandprice').style.display ='none';
+	  document.getElementById('submita').style.display ='block';
+	  document.getElementById('grandprice').style.display ='none';
+	  
+	}		   
+			   
+	 function hide21(){document.getElementById('fix').style.display ='none';}
+	function hide22(){document.getElementById('submita').style.display ='none';
+	                   document.getElementById('fix').style.display ='block';
+	                   document.getElementById('key1b').style.display ='block';
+	                   document.getElementById('key1a').style.display ='none';
+	                   document.getElementById('key3').style.display ='block';
+	                   document.getElementById('grandprice').style.display ='block';
+	                    document.frmOne.duration.value="0";
+	}
+    function hide3(){document.getElementById('submita').style.display ='block';
+	                   document.getElementById('fix').style.display ='none';
+	                   document.getElementById('key1b').style.display ='none';
+	                   document.getElementById('key1a').style.display ='block';
+	                   document.getElementById('key3').style.display ='none';
+	                   document.getElementById('grandprice').style.display ='none';
+	                   document.frmOne.duration.value="0";
+	}
+	
+    function hide4(){
+	                   document.getElementById('autopay').style.display ='none';
+	                  
+	}	
+	
+	 function payWithPaystackq(){
+	     var comment = document.frmOne.comment.value;
+				var transprice = document.frmOne.select1.value;
+				var maturity = document.frmOne.maturity.value;
+			var area = $("#samout").val();
+                var id = $("#id").val();
+               // var td= Math.floor(Math.random() * 110000000)+1;
+             // var tr_id = $("#tr_id").val(td);
+              var type = 'fixedfund';
+			var tr_id = $("#tr_id").val();
+			var ttime = $("#ttime").val();
+	     var myLng = $("#myLng").val(); 
+				var myLat = $("#myLat").val();
+	     var email = $("#email").val(); 
+	var phone = $("#phone").val(); var name = $("#name").val(); 
+	var address = $("#address").val(); 
+	var  sum= (document.frmOne.price.value);
+	var id = $("#id").val();
+	let myn= "name=: "+name ;let myp= " ,phone=: "+phone;let mya= " ,amout=: "+sum;let myad= ", shipping add=: "+address;let mymail= ", email=: "+email;
+	var myLng = $("#myLng").val(); 
+				var myLat = $("#myLat").val();
+			//alert("PLEASE NOTE the Total Price include Shipment fee of N");
+                var dataString = "email="+email+"&sum="+sum+"&type="+type+"&myLng="+myLng+"&myLat="+myLat+"&ttime="+ttime+"&tr_id="+tr_id+"&area="+area+"&comment="+comment+"&id ="+id +"&maturity="+maturity+"&area="+area+"&transprice="+transprice+"&submit2=";
+                if(maturity=='0'){
+                    navigator.vibrate([1000]);alert("please chose TENURE");
+                }
+                else if(maturity!=='0') {
+	     
+	     $.ajax({
+                    type: "POST",
+                    url: "submit.php",
+                    data: dataString,
+                    crossDomain: true,
+                    cache: false,
+                    beforeSend: function() {
+                        $("#submit2").val('SUBMITING');
+                    },
+                    success: function(data) {fetchData();payWithPaystack();
+                    $("#fixed_add").animate({height:["toggle","swing" ], width:["toggle","swing" ]}, {duration:5000, easing:"linear"});
+        $("#fixed_add").modal('hide');
+        //alert(data);
+                        if (data == "success") {
+                            
+                            alert("submited");
+                            $("#submit2").val("submited");
+                        } else if (data == "error") {
+                            alert("error");
+                        }
+                    }
+                });}
+	     }
+    function fund(){var td= Math.floor(Math.random() * 110000000)+1;
+              var tr_id = $("#tr_id").val(td);
+                //$("#nametr_id").append("<span>" + td+ "</span>");
+                document.getElementById("nametr_id").innerHTML ='trasaction id: '+td;  }
+	
+	function payWithPaystack(){{var email = $("#email").val(); 
+	var phone = $("#phone").val(); var name = $("#name").val(); 
+	var address = $("#address").val(); 
+	var  sum= ((document.frmOne.price.value)*100 );
+	var  sum1= (document.frmOne.price.value);
+	var id = $("#id").val();
+	var pid =$("#tr_id").val();
+	
+	var tt =$("#k").val();
+	var ta =tt;
+	let say= "youre funding ur wallet account with:N";let myn= "name=: "+name ;let myp= " ,phone=: "+phone;let mya= " ,amout=: "+sum;let myad= ", shipping add=: "+address;let mymail= ", email=: "+email;
+	//submit2();
+	
+	if(confirm(say+sum1)
+	//confirm(myn+name+mymail)
+	)
+		  
+    var handler = PaystackPop.setup({
+      key: 'pk_live_f95513a203c9c81bb87ba953183a3b00f95572f7',
+      email: email,
+      amount: sum,
+      ref: pid, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Mobile Number",
+                variable_name: phone,
+                value: phone
+            }
+         ]
+      },
+      callback: function(response){
+       //var authorization =   response.authorization.authorization_code;
+      //var reference = authorization; 
+      var uploadamount = ((document.frmOne.price.value)*100 );
+     var email = $("#email").val(); 
+     var pid_in =response.reference;
+     //alert(authorization);
+     
+     $.ajax({
+      url : "verifypay.php",
+      type : "POST",
+      cache: false,
+      data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
+      success:function(data){alert(data);
+     // $("#naira").val(data );
+        //$("#editForm").html(data);
+      }
+    });
+      fetchData();
+         // alert('success. transaction ref is ' + response.reference);
+          alert('success. transaction ref is ' + response.status);
+      },
+      onClose: function(){//if(confirm("do you want to council the transaction"))
+          alert('window closed, UNCOMPLETED trasaction');
+      },
+      //plan:ta ,
+      label: "wishvile",
+    });
+    handler.openIframe();
+  }}
+  
+   function cardless(){var tick = document.frmOne.plan.value;
+   if(tick !=5){alert("please tick Terms and Condition");//alert(tick);
+   document.getElementById("plan").style.border = "5px solid red";}
+   else {var totalpay = $("#pay_amout").val();
+       if (totalpay>=100){
+	     var comment = document.frmOne.comment.value;
+				var transprice = document.frmOne.select1.value;
+				var maturity = document.frmOne.duration.value;
+			var area = $("#pay_total").val();
+                var id = $("#id").val();
+               var authorization_code = $("#cardtype").val();
+              var type = $("#autofund").val();
+              var plan_code = $("#k").val();
+			var tr_id = $("#tr_id").val();
+			var ttime = $("#ttime").val();
+	     var myLng = $("#myLng").val(); 
+				var myLat = $("#myLat").val();
+	     var email = $("#email").val(); 
+	var phone = $("#phone").val(); var name = $("#name").val(); 
+	var address = $("#address").val(); 
+	var  sum= (document.frmOne.pay_amout.value);
+	var id = $("#id").val();
+	let myn= "name=: "+name ;let myp= " ,phone=: "+phone;let mya= " ,amout=: "+sum;let myad= ", shipping add=: "+address;let mymail= ", email=: "+email;
+	var myLng = $("#myLng").val(); 
+				var myLat = $("#myLat").val();
+			//alert("PLEASE NOTE the Total Price include Shipment fee of N");
+                var dataString = "email="+email+"&type="+type+"&plan_code="+plan_code+"&sum="+sum+"&myLng="+myLng+"&myLat="+myLat+"&ttime="+ttime+"&tr_id="+tr_id+"&area="+area+"&comment="+comment+"&id ="+id +"&maturity="+maturity+"&authorization_code="+authorization_code+"&area="+area+"&transprice="+transprice+"&submit2=";
+                if(maturity=='0'){
+                    navigator.vibrate([1000]);alert("please chose TENURE");
+                }
+                else if(maturity!=='0') {
+	     
+	     $.ajax({
+                    type: "POST",
+                    url: "cardless_charge.php",
+                    data: dataString,
+                    crossDomain: true,
+                    cache: false,
+                    beforeSend: function() {
+                        $("#addfund").val('wait..');
+                    },
+                    success: function(data) {fetchData();
+                    $("#fixed_add").animate({height:["toggle","swing" ], width:["toggle","swing" ]}, {duration:5000, easing:"linear"});
+        $("#fixed_add").modal('hide');
+        alert(data);
+                        if (data == "success") {
+                            
+                            alert("submited");
+                            $("#addfund").val("submited");
+                        } else if (data == "error") {
+                            alert("error");
+                        }
+                    }
+                });}
+	     }else if (totalpay<100){ alert("please dear enter target amout no less than #2000");}}}
+  
+  
+  
+  
+  
+  
+  
+   function payWithPaystack2(){var tick = document.frmOne.plan.value;
+   if(tick !=5){alert("please tick Terms and Condition");//alert(tick);
+   document.getElementById("plan").style.border = "5px solid red";}
+   else {var totalpay = $("#pay_amout").val();
+       if (totalpay>=100){
+	     var comment = document.frmOne.comment.value;
+				var transprice = document.frmOne.select1.value;
+				var maturity = document.frmOne.duration.value;
+			var area = $("#pay_total").val();
+                var id = $("#id").val();
+               // var td= Math.floor(Math.random() * 110000000)+1;
+             // var tr_id = $("#tr_id").val(td);
+              var type = $("#autofund").val();
+              var plan_code = $("#k").val();
+			var tr_id = $("#tr_id").val();
+			var ttime = $("#ttime").val();
+	     var myLng = $("#myLng").val(); 
+				var myLat = $("#myLat").val();
+	     var email = $("#email").val(); 
+	var phone = $("#phone").val(); var name = $("#name").val(); 
+	var address = $("#address").val(); 
+	var  sum= (document.frmOne.pay_amout.value);
+	var id = $("#id").val();
+	let myn= "name=: "+name ;let myp= " ,phone=: "+phone;let mya= " ,amout=: "+sum;let myad= ", shipping add=: "+address;let mymail= ", email=: "+email;
+	var myLng = $("#myLng").val(); 
+				var myLat = $("#myLat").val();
+			//alert("PLEASE NOTE the Total Price include Shipment fee of N");
+                var dataString = "email="+email+"&type="+type+"&plan_code="+plan_code+"&sum="+sum+"&myLng="+myLng+"&myLat="+myLat+"&ttime="+ttime+"&tr_id="+tr_id+"&area="+area+"&comment="+comment+"&id ="+id +"&maturity="+maturity+"&area="+area+"&transprice="+transprice+"&submit2=";
+                if(maturity=='0'){
+                    navigator.vibrate([1000]);alert("please chose TENURE");
+                }
+                else if(maturity!=='0') {
+	     
+	     $.ajax({
+                    type: "POST",
+                    url: "submit.php",
+                    data: dataString,
+                    crossDomain: true,
+                    cache: false,
+                    beforeSend: function() {
+                        $("#addfund").val('wait..');
+                    },
+                    success: function(data) {fetchData();payWithPaystack3();
+                    $("#fixed_add").animate({height:["toggle","swing" ], width:["toggle","swing" ]}, {duration:5000, easing:"linear"});
+        $("#fixed_add").modal('hide');
+        //alert(data);
+                        if (data == "success") {
+                            
+                            alert("submited");
+                            $("#addfund").val("submited");
+                        } else if (data == "error") {
+                            alert("error");
+                        }
+                    }
+                });}
+	     }else if (totalpay<100){ alert("please dear enter target amout no less than #2000");}}}
+    
+	
+	function payWithPaystack3(){{var email = $("#email").val(); 
+	var phone = $("#phone").val(); var name = $("#name").val(); 
+	var address = $("#address").val(); 
+	var  sum= ((document.frmOne.pay_amout.value)*100 );
+	var  sum1= (document.frmOne.pay_amout.value);
+	var id = $("#id").val();
+	var pid =$("#tr_id").val();
+	
+	var tt =$("#k").val();
+	var ta =tt;
+	let say= "youre funding ur wallet account with:N";let myn= "name=: "+name ;let myp= " ,phone=: "+phone;let mya= " ,amout=: "+sum;let myad= ", shipping add=: "+address;let mymail= ", email=: "+email;
+	//submit2();
+	
+	if(confirm(say+sum1)
+	//confirm(myn+name+mymail)
+	)
+		  
+    var handler = PaystackPop.setup({
+      key: 'pk_live_f95513a203c9c81bb87ba953183a3b00f95572f7',
+      email: email,
+      amount: sum,
+      ref: pid, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Mobile Number",
+                variable_name: phone,
+                value: phone
+            }
+         ]
+      },
+      callback: function(response){
+       //var authorization =   response.authorization.authorization_code;
+      //var reference = authorization; 
+      var uploadamount = ((document.frmOne.price.value)*100 );
+     var email = $("#email").val(); 
+     var pid_in =response.reference;
+     //alert(authorization);
+     
+     $.ajax({
+      url : "verifypay.php",
+      type : "POST",
+      cache: false,
+      data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
+      success:function(data){alert(data);
+     // $("#naira").val(data );
+        //$("#editForm").html(data);
+      }
+    });
+      fetchData();
+          alert('success. transaction ref is ' + response.reference);
+          alert('success. transaction ref is ' + response.status);
+      },
+      onClose: function(){//if(confirm("do you want to council the transaction"))
+          alert('window closed, UNCOMPLETED trasaction');
+      },
+      plan:ta ,
+      label: "wishvile",
+    });
+    handler.openIframe();
+  }}
+  
+	 function isNumberKey(evt)
+			  {
+				 var charCode = (evt.which) ? evt.which : event.keyCode
+				 if (charCode > 31 && (charCode < 48 || charCode > 57))
+					return false;
+
+				 return true;
+			  }
+			  
+  
+	  </script>
+	  
+	  <div id="gallery" style="overflow-x:auto;">
+	  <table class='table table-striped'>
+	  <thead>
+			        <tr>
+			          <th class="tableths">T.no</th>
+			          
+					  <th class="tableth1">PURPOSED</th>
+			          <th class="tableth1">Target-AMOUT</th>
+			          <th class="tableth1">Uploaded-AMOUT</th>
+			          <th class="tableth1">M D</th>
+			          <th class="tableth1">M F</th>
+			          <th class="tableth1">SP_total</th>
+			          <th class="tableth1">convert to "$"</th>
+			          <th class="tableth1">Remark</th>
+			        </tr>
+			      </thead>
+	  <tr >
+			          <td class="tableths">1</td>
+			          <td  class="tableth">house rent</td>
+			          <td class="tableths">1000,000</td>
+			          <td class="tableths">300,000</td>
+			          <td class="tableths">12</td>
+			           <td class="tableths">r</td>
+			           <td class="tableths">600,000</td>
+			           <td class="tableths"><span></span><span></span><input type="button" style='background-color:palegreen;opacity:2;color:black;' id="submit3" class="button button-block" value="1,000" /><span></span></td>
+			           <td class="tableths" style='background-color:red;opacity:2;color:black;'>unsucessful fund</td>
+			           
+			   </tr> <tbody id="galleryq">
+			   </tbody>
+			   <tbody id="newdata">
+			   </tbody>
+	  </table>
+	 </div>
+	  
+	  <div id="gallery1" >
+	      
+	  
+	  </div>
+	  
+	  
+	   <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">convert to dollar"$"</h4>
+        </div>
+        <span>YOU ARE CONVERTING</span>
+        <INPUT TYPE = "number" name = "naira" id="naira"  value ="" style="border:#999999 solid 1px; background-color:#FFF; width:30%;color:black; height:20px;" readonly  /> 
+        <span>TO US DOLLAR</span>
+        <INPUT TYPE = "hidden" name = "ide" id="ide"  value ="" style="border:#999999 solid 1px; background-color:#FFF; width:150px;color:black; height:20px;" readonly />
+        
+        <div id="choice"  class="modal-body">
+          <a><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+	  <input type='button' class='btn-success' value="CONVERT TO DOLLAR"  onclick='convert()'> </a>
+	  
+	  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div>
+	 
+	 
+	   <div class="modal fade" id="autopay" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Autopay</h4>
+        </div>
+      <div id="choice"  class="modal-body">
+          <a><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+	  <input type='button' class='btn-success' value="AUTO PAY"  onclick='payWithPaystackq()'> </a>
+	  
+	  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div> 
+	  
+	  
+	
+	  
+	  
+	<div class='modal fade'  id='fixed_add' >
+    <div class='modal-dialog'>
+      <div class='modal-content' style='background-color:#e4eced;opacity:2;'>
+        <div class='modal-header'>
+          <h4 class='modal-images' style="color: Black;height:10%;font-size: 30px;">SAVING SCHEME</h4>
+		  <label id="date" style="color: red;height:10%;font-size: 16px;"></label>
+          <button type='button' class='close' data-dismiss='modal'>&times;</button>
+        </div>
+		
+		<div class='modal-body'>
+        <div id="editForm">
+ <form NAME = "frmOne" method="post" action="plan.php">
+		<label id="nametr_id" style="color: Black;height:10%;font-size: 20px;">	</label>
+		
+		<div style="
+  position: relative;
+  background: pink;
+  background: pink; /* Black see-through */
+  color: #f1f1f1;
+  color: Black;
+  font-size: 14px;
+  border: 1px solid #555;
+  border-color:brown;
+  border-radius: 5%;">
+		<label id="id_id" > Product Id:	</label>
+		<input type="hidden" id="ttime" name ="ttime" value ="" />
+		<input type="hidden" id="id" name ="id" value ="" />
+		<input type="hidden" name = "myLng" id="myLng" /><input type="hidden" name = "myLat" id="myLat" value=""/>
+		<INPUT TYPE = "hidden" value ="" id="tr_id" name="tr_id" readonly />
+		<span style="font-size:11px; font-family:Arial, Helvetica, sans-serif; text-align:left; line-height:17px;color:#000000;">Target Amout: </span>
+	 <br><span style="color: Black;height:10%;font-size: 20px;">&#8358;</span>
+	    
+		 <INPUT TYPE = "number"  name = "select1" id="select1" value ="" onchange="OnChange(this.value)" required="" onKeyPress="return isNumberKey(event)" style="width:60%; height:20px;color:black;"  >
+	<br><br><br>
+    <INPUT TYPE = "hidden"  name = "samout" id="samout" value ="0" onchange="OnChange(this.value)" required="" onKeyPress="return isNumberKey(event)" style="width:60%; height:20px;color:black;"  >
+        <div id="fix"  >
+	 <span style="font-size:11px; font-family:Arial, Helvetica, sans-serif; text-align:left; line-height:17px;color:#000000;">Upload Amout: </span>
+	 <br><span style="color: Black;height:10%;font-size: 20px;">&#8358;</span>
+    <INPUT TYPE = "number" name = "price" id="price"  value ="" style="border:#999999 solid 1px; background-color:#FFF; width:60%;color:black; height:20px;" onchange="OnChange(this.value)" />
+    <input type="hidden"  id="email" name = "email" required=""  value="" >
+	<br><br> 
+	<div class="item-title item-label" style="color: Black;font-size: 20px;"> TENURE</div>
+	 <select onchange="OnChange(this.value)" style='foreground-color:#428F6A;color:black;opacity:2;width:60%;' name='maturity'  onKeyPress="return isNumberKey(event)"  >
+	               <option value='0'>Choose Duration</option>
+				  <option value='1'>1 month(5%)P.A</option>
+    				<option value='2'>2 months(10%)P.A</option>
+    				<option  value='3'>3 months(10%)P.A</option>
+				  <option  value='4'>4 months(10%)P.A</option>
+				  <option value='5'>5 months(15%)P.A</option>
+				  <option value='6'>6 months(15%)P.A</option>
+				  <option  value='7'>7 months(20%)P.A</option>
+				  <option value='8'>8 months(20%)P.A</option>
+				  <option value='9'>9 months(20%)P.A</option>
+				  <option  value='10'>10 months(25%)P.A</option>
+				  <option value='11'>11 months(25%)P.A</option>
+				  <option value='12'>12 months(25%)P.A</option>
+				  <option value='24'>2 years(35%)P.A</option>
+				  <option  value='36'>3 years(45%)P.A</option>
+				  <option value='48'>4 years(50%)P.A</option>
+				  <option value='60'>5 years(70%)P.A</option>
+				  </select><br> <br><br>
+     <span type="hidden" style="font-size:11px; font-family:Arial, Helvetica, sans-serif; text-align:left; line-height:17px;color:#000000;">Dear your anticipated sum is:  </span>
+	
+	<br></div>
+	<p id="grandprice" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
+	<br></div>
+			
+             <input type="hidden" onclick='test()' id="k" name="k" class="button button-block" value="test" data-toggle='modal'  data-target='#autopay' data-dismiss='modal' />
+           
+           <div >Purposes/Intetions</div>
+           <br><select style='foreground-color:#428F6A;opacity:2;color:black;width:70%;' id="comment_dbase" onchange="choice()"   name="comment_dbase" ><option value='NONE'>NONE</option>
+			 </select>
+			<input type='textarea' style='background-color:white;color:black;opacity:2;'  placeholder='your wishes: "buy house"' name='comment' id='comment'  required=""/>
+			<div id="submita"><a onclick='hide22()'><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' id="submit" class="button button-block" value="FIXED-FUND" /><span></span></a></div>
+			
+			<a id="key1b" ><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' onclick='payWithPaystackq()'  id="submit2" class="button button-block" value="FIXED FUND"  /><span></span></a>
+			<a id="key3"><input type="button" id="key3a"  class='btn btn-danger btn-sm' style='opacity:2;' onclick='hide3()'  value="close" /></a>
+			
+			<div id="key1a"><a onclick='hide1()'><span></span><span></span>
+			<input type="button" style='background-color:lilac;opacity:2;color:black;' id="key1" class="button button-block" value="AUTO FUND" /><span></span></a></div>
+			<br><br>
+           <div id='paylater'> <div style="
+  position: relative;
+  background: gray;
+  background: gray; /* Black see-through */
+  color: #f1f1f1;
+  color: Black;
+  font-size: 14px;
+  border: 1px solid #555;
+  border-color:brown;
+  border-radius: 3%; 
+  width:90%;"
+  ><br>
+			<div class="item-title item-label" style="
+  position: relative;
+  background: blue;
+  color: white;
+  font-size: 16px;
+  border: 1px solid #555;
+  border-color:brown;
+   padding-top: 5%;
+  padding-bottom: 5%;"  > AUTO FUND</div><br><br>
+			<div class="item-title item-label"> Number of Occurance</div>
+				  <select style='foreground-color:#428F6A;opacity:2;width:40%;' name='duration' onchange="OnChange2(this.value) "   >
+				  <option value='0'>Number of Occurance</option>
+				  <option value='2'>2 months</option>
+				  <option  value='3'>3 months</option>
+				  <option value='4'>4 months</option>
+				  <option value='5'>5 months</option>
+				  <option  value='6'>6 months</option>
+				  <option value='7'>7 months</option>
+				  <option value='8'>8 months</option>
+				  <option  value='9'>9 months</option>
+				  <option value='10'>10 months</option>
+				  <option value='11'>11 months</option>
+				  <option value='12'>12 months</option>
+				  <option  value='13'>13 months</option>
+				  <option value='14'>14 months</option>
+				  <option value='15'>15 months</option>
+				  <option  value='16'>16 months</option>
+				  <option value='17'>17 months</option>
+				  <option value='18'>18 months</option>
+				  <option  value='19'>19 months</option>
+				  <option value='20'>20 months</option>
+				  </select><br><br>
+          <div class="item-title item-label"> Monthly Amount </div>
+		  
+		  <div class="item-input-wrap"><span style="color: Black;width:40%;font-size: 20px;">&#8358;</span><input type="text" value ="0" name="pay_amout" id="pay_amout" readonly style="width:200px;color:black;"  /></div>
+		  <div class="item-title item-label">Supposed Total Sum</div>
+		  
+		  <div class="item-input-wrap"><span style="color: Black;height:10%;font-size: 20px;">&#8358;</span><input type="text" value ="0" name="pay_total" id="pay_total" readonly style="width:200px;color:black;"  /></div><br><br>
+		  <div>T and C</div>
+		  <input type='text' id="plan" style="right: auto;border: 1px solid #555;width:1px;height:1px;color:black;" readonly onclick='test()' name="plan" value="">
+            <label href="#">i, abide by the terms and conditions of this app</label>
+		  <div class="item-input-wrap">
+		  <input type="hidden" placeholder="autofund" id="autofund" name = "autofund" style="color: Black;width:200px;"  required="" readonly value="AUTO FUND" ></div>
+		  
+			  
+			  <br><select style='foreground-color:#428F6A;opacity:2;width:70%;' id="cardtype" onchange="cardless() "   name="cardtype" ><option value='NONE'>NONE</option><option value='AUTH_glor0pxhnv'>pay</option>
+			 </select>
+			
+            <div id='confirm'></div>
+            <a><span></span><input type="" placeholder="addfund" id="addfund" name = "addfund" style="color: Black;width:150px;"  required="" readonly onclick='payWithPaystack2()' value="ADD FUND" ><span></span></a>
+			<a><span></span><button style='background-color:seagreen;opacity:2;' id="submit"  value="" class="button button-block">AUTO FUND</button><span></span></a>
+			<a><input type="button" id="key2"  class='btn btn-danger btn-sm' style='opacity:2;' onclick='hide2()'  value="close" /></a>
+			</div>
+	</div></form>
+       
+     </div></div><div id="whatsap"></div> </div> <button type='button' class='btn btn-danger btn-sm' data-dismiss='modal'>Close</button> 
+
+	</div>
+	</div> 
+	  
+
+	
+	</div>	
+<div id ='gall' class='bottom-center' style=';'>MORE</div>
+
+</body>
+
+</html>

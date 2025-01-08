@@ -1,0 +1,40 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="css/app.css">
+    
+   
+	<script src="jquery.min.js"></script>
+    
+  <script src="osi/model-viewer.min.js" type="text/javascript"></script>
+   <script src="osi/model-viewer-legacy.js" type="text/javascript"></script>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+  </head>
+<style>
+  model-viewer#reveal {
+    --poster-color: transparent;
+  }
+</style>
+<body>
+
+<div>
+<model-viewer id="reveal" loading="eager" camera-controls auto-rotate poster="src/loading.gif" src="models/tree.gltf" alt="A 3D model of a shishkebab"></model-viewer>
+
+
+<--model-viewer  src="models/DamagedHelmet.gltf" alt="A 3D model of an DamagedHelmet" auto-rotate camera-controls></model-viewer>
+
+<model-viewer src="models/tree.gltf" poster="poster.webp" ar-modes="webxr scene-viewer quick-look" ar camera-controls shadow-intensity="2" environment-image="spruit_sunrise_1k_HDR.hdr" skybox-image="spruit_sunrise_1k_HDR.hdr" shadow-softness="0.86" auto-rotate min-camera-orbit="-180deg 0deg auto" max-camera-orbit="180deg 180deg auto">
+
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer></div>
+</body>
+
+</html>
