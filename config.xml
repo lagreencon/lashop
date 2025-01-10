@@ -6,6 +6,10 @@
         The Design team
     </author>
     <content src="index.html" />
+    <platform name="android">
+  <icon monochrome="www/img/logo.png" background="res/icon/android/ldpi-background.png" density="ldpi" foreground="www/img/logo.png" />
+  
+</platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 </widget>
