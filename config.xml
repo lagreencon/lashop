@@ -7,7 +7,7 @@
     </author>
     <content src="index.html" />
     <platform name="android">
-  <icon monochrome="www/img/logo.png" background="res/icon/android/ldpi-background.png" density="ldpi" foreground="www/img/logo.png" />
+  <icon monochrome="www/img/logo.png" background="www/img/logo.png" density="ldpi" foreground="www/img/logo.png" />
   <icon src="www/img/logo.png" density="ldpi" />
         <icon src="www/img/logo.png" density="mdpi" />
         <icon src="www/img/logo.png" density="hdpi" />
