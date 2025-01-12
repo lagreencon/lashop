@@ -14,6 +14,17 @@
         <icon src="www/img/logo.png" density="xhdpi" />
         <icon src="www/img/logo.png" density="xxhdpi" />
         <icon src="www/img/logo.png" density="xxxhdpi" />
+    
+    <splash src="www/img/logo.png" density="land-hdpi"/>
+    <splash src="www/img/logo.png" density="land-ldpi"/>
+    <splash src="www/img/logo.png" density="land-mdpi"/>
+    <splash src="www/img/logo.png" density="land-xhdpi"/>
+
+    <splash src="www/img/logo.png" density="port-hdpi"/>
+    <splash src="www/img/logo.png" density="port-ldpi"/>
+    <splash src="www/img/logo.png" density="port-mdpi"/>
+    <splash src="www/img/logo.png" density="port-xhdpi"/>
+
 </platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
