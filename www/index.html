@@ -324,7 +324,7 @@ border: 1px solid #555;
 		hide2();
 		hide21();
 		emailcheck();
-		fetchData();fetchDataOne();device();locat();fetchinfo1();	
+		device();locat();fetchinfo1();fetchData();	
 			}});fetchloadserver();
 		setInterval(fetchloadserver, 3000);
 		setInterval(fetchData, 50000);
@@ -384,20 +384,20 @@ border: 1px solid #555;
      var devr = parser.getUA();
         //alert(devr);
          var myemail = decodeURI(getUrlVars()["nemail"]);
-         var device = devr;
+         var devicee = devr;
         var code = decodeURI(getUrlVars()["code"]);
     $.ajax({
       url  : "https://wish.designsandsystems.com.ng/fetch_me.php",
       type : "GET",
       cache: false,
-      data : {myemail:myemail,device:device,code:code},
+      data : {myemail:myemail,device:devicee,code:code},
       success:function(data){
           if(data==="error" ){alert('Unreconnized Device found');$("#confirmdevice_error").modal();
            $.ajax({
-      url  : "fetch_melog.php",
+      url  : "https://wish.designsandsystems.com.ng/fetch_melog.php",
       type : "GET",
       cache: false,
-      data : {myemail:myemail,device:device,code:code},
+      data : {myemail:myemail,device:devicee,code:code},
       success:function(data){
         
         
