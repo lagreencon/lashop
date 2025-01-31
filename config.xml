@@ -23,8 +23,12 @@
     <splash src="www/img/logo.png" density="port-hdpi"/>
     <splash src="www/img/logo.png" density="port-ldpi"/>
     <splash src="www/img/logo.png" density="port-mdpi"/>
-    <splash src="www/img/logo.png" density="port-xhdpi"/>
+    
 
+</platform>
+    <platform name="android">
+    <preference name="AndroidWindowSplashScreenAnimatedIcon"  />
+        <splash src="www/img/logo.png" density="port-xhdpi"/>
 </platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
