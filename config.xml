@@ -28,7 +28,7 @@
 </platform>
     <platform name="android">
     <preference name="AndroidWindowSplashScreenAnimatedIcon"  />
-        <splash src="www/img/logo.png" density="port-xhdpi"/>
+        <splash src="www/img/logo.png" />
 </platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
