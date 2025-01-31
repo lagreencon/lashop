@@ -151,6 +151,48 @@ function submit(){
 
 }
 
+
+function recoversubmit(){ 
+  
+    
+    var reemail= $.trim($("#renemail").val()); 
+    
+    
+    
+        if(renemail === 'null'||renemail === '0'||renemail === 'undefined'||renemail === ''){alert("please Enter email");}
+        else if(/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(reemail)) {
+    
+    $.ajax({
+
+        type: "POST",crossDomain: true, cache: false,
+        url: "https://wish.designsandsystems.com.ng/Recover.php",
+        data : {reemail:reemail},
+        beforeSend: function() {
+                        $("recoverButton1").val('recover Account...');
+                    },
+        success: function(data){alert(data); 
+//alert("submited");
+              $("#recoverButton1").val('submited');              
+            if(data == "success"){
+                alert("check mail ");
+                $("#recoverButton1").val("success");
+                $("#signup").modal('hide');
+                $("#recoverButton1").val("signup");
+            }
+            else if( data == "exist")
+                $("#recoverButton1").val("Account");
+            else if(data == "error")
+                $("#recoverButton1").val(" Failed");
+        }
+
+    }); }else{alert('Please enter valid mail');
+        }
+
+
+
+
+}
+
 function check(){
 
    var Surname= $.trim($("#Surname").val()); 
@@ -294,7 +336,7 @@ function login(){
 			<input type='password' style='background-color:white;color:black;opacity:2;'   placeholder='confirm password' name='confirm_password' id='confirm_password' required=""/>
 			
 			
-			<a onclick="submit()"><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' name="registerButton1"  id="registerButton1" class="button button-block" value="SUBMIT" /><span></span></a>
+			<a onclick="submit()"><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' name="registerButton1"  id="registerButton1" class="button button-block" value="SUBMIT" /><span></span></a><a ></a>
         
         
          
@@ -305,6 +347,42 @@ function login(){
         </div>
       </div>
     </div></div>
+    
+    
+      <div class="modal fade" id="passwordrecovery" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">password recovery</h4>
+        </div>
+        <div id="choice"  class="modal-body">
+        <span>password recovery</span>
+        <input type="hidden" id="device" name ="device" value ="" />
+		<input type="hidden" id="text">
+		<input type="hidden" id="text2">
+		<input type="hidden" name = "myLng" id="myLng" />
+		<input type="hidden" name = "myLat" id="myLat" value=""/>
+       
+		
+              
+			<div class="item-title item-label">E-Mail</div>
+            <div class="item-input-wrap">
+              <input type="email" placeholder="Your@email.com" style='background-color:white;color:black;opacity:2;'   id="renemail" name = "renemail" required=""  value="" ></div>
+			  
+			  <br>
+              
+			<a onclick="recoversubmit()"><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;font-size: 14px;' name="recoverButton1"  id="recoverButton1" class="button button-block" value="Send" /><span></span></a>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div>
+    
+    
+    
 	<form NAME = "frmOne" >
 		
 		
@@ -336,7 +414,8 @@ function login(){
            <div >password</div>
 			<input type='password' style='background-color:white;color:black;opacity:2;'   placeholder='password' name='password1' id='password1' required=""/>
 			
-	        <a onclick="login()"><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' name="loginButton"  id="loginButton" class="button button-block" value="LOGIN" /><span></span></a>
+	        <a onclick="login()"><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' name="loginButton"  id="loginButton" class="button button-block" value="LOGIN" /></a>
+	        <a data-toggle='modal' style="font-size: 11px;" data-target='#passwordrecovery'>forget password!</a>
       </form> <a><span></span>
       <span></span>
       <span></span>
