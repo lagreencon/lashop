@@ -25,7 +25,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
 	<script src="https://checkout.flutterwave.com/v3.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.js" integrity="sha512-vISbGOeXVsyi+HddyUt0T5drmi9JB1SFSrOeQQYQVGQtraka7UFPUrjOCV+nndyVMG5RJpH8J4B1XuvCseajDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	
+	<script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
 	 <script src="https://js.paystack.co/v1/inline.js"></script>
 <SCRIPT language=Javascript>
 			  function isNumberKey(evt)
@@ -371,6 +371,7 @@ border: 1px solid #555;
 			fetchquadpaybalance(); 
             fetchTotal(); 
             loadSummary();
+            getIP();
             //fetchloadserver();
         }   
         
@@ -450,7 +451,11 @@ border: 1px solid #555;
       }
     });}
     
-    
+  function getIP(json) {
+    document.getElementById("text").value = JSON.stringify(json, null, 2);
+    document.getElementById("text2").value = json.ip; 
+    document.getElementById("address").value = (json.city)+","+(json.region); 
+      }  
   
   
   function locat(){if (navigator.geolocation) {
@@ -1211,12 +1216,13 @@ function success(position) {
     var deviced  = $("#device").val();
     var myLng1  = $("#myLng").val();
     var myLat1  = $("#myLat").val();
+    var myip  = $("#text2").val();
     //alert(myLng1 );alert(myLat1);
     $.ajax({
       url : "https://wish.designsandsystems.com.ng/fetchstarplace.php",
       type : "POST",
       cache: false,
-      data : {mamail:mamail,deviced:deviced,myLng1:myLng1,myLat1:myLat1},
+      data : {mamail:mamail,deviced:deviced,myLng1:myLng1,myLat1:myLat1,myip:myip},
       beforeSend:function() {
                       
                     },
@@ -1279,11 +1285,14 @@ function success(position) {
     var billtype = $("#billchoice").val();
     var billpass =  $("#checkpassword").val();
     var billgrp =  $("#billgroup").val();
+     var mLg  = $("#myLng").val();
+    var mLt  = $("#myLat").val();
+    var ipno  = $("#text2").val();
     $.ajax({
       url : "https://wish.designsandsystems.com.ng/quadpay.php",
       type : "POST",
       cache: false,
-      data : {mmail:mmail,device1:device1,billtype:billtype,billpass:billpass,billGroup:billgrp},
+      data : {mmail:mmail,device1:device1,billtype:billtype,billpass:billpass,billGroup:billgrp,mLg:mLg,mLt:mLt,ipno:ipno},
       beforeSend:function() {
                         document.getElementById("overlay").style.display = "block";
                         
@@ -1300,13 +1309,15 @@ function success(position) {
   function quadpaytransfer(){
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
-   
+   var myLnong  = $("#myLng").val();
+    var myLatit  = $("#myLat").val();
+    var ipm  = $("#text2").val();
     var billpass =  $("#checkpassword").val();
     $.ajax({
       url : "https://wish.designsandsystems.com.ng/quadpaytranfer.php",
       type : "POST",
       cache: false,
-      data : {mmail:mmail,device1:device1,billpass:billpass},
+      data : {mmail:mmail,device1:device1,billpass:billpass,myLnong:myLnong,myLatit:myLatit,ipm:ipm},
       beforeSend:function() {
                         document.getElementById("overlay").style.display = "block";
                         //$("#loading").text("some moment...");
@@ -1322,13 +1333,15 @@ function success(position) {
    function quadpayINtransfer(){
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
-   
+   var Lnong  = $("#myLng").val();
+    var Latit  = $("#myLat").val();
+    var ipnow  = $("#text2").val();
     var billpass =  $("#checkpassword").val();
     $.ajax({
       url : "https://wish.designsandsystems.com.ng/quadpayintranfer.php",
       type : "POST",
       cache: false,
-      data : {mmail:mmail,device1:device1,billpass:billpass},
+      data : {mmail:mmail,device1:device1,billpass:billpass,Lnong:Lnong,Latit:Latit,ipnow:ipnow},
       beforeSend:function() {
                         document.getElementById("overlay").style.display = "block";
                         //$("#loading1").text("some moment...");
@@ -1830,7 +1843,8 @@ function success(position) {
 		
 		
 		<div>
-	
+	    <input type="hidden" id="text">
+		<input type="hidden" id="text2">
 		<input type="hidden" id="newtime" name ="quadtime" value ="" />
 		<input type="hidden" id="deviceinfo" name ="quaddeviceinfo" value ="" />
 		<input type="hidden" name = "newlng" id="quadlng" />
