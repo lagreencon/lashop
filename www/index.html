@@ -302,7 +302,7 @@ border: 1px solid #555;
 	  <p id="grandtotal" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
 </div>
       
-	  <script>
+	   <script>
 	  
 	  $(document).ready(function() {
 	      //document.getElementById('loader').style.display ='block';
@@ -320,45 +320,76 @@ border: 1px solid #555;
             $("#date").append("<span>" + myDate + "</span>");
             $("#quadpaytranferbank").select2();
         document.getElementById('future').style.display ='none';
-        document.getElementById("overlay").style.display = "none";
+		emailcheck();
+		device();
+		locat();
+		
+		fetchinfo1();
 		hide2();
 		hide21();
-		emailcheck();
-		device();locat();fetchinfo1();fetchData();	
-			}});fetchloadserver();
-		setInterval(fetchloadserver, 3000);
-		setInterval(fetchData, 50000);
-		
-		
-		//setInterval(expire(), 3000); 
-		
+		fetchData();
+		//setInterval(expire(), 30000); 	
+		//fetchDataOne();
 			//ReverseGeocodeLatLng(latlng);
+			}});
 	  
         function emailcheck(){let email = $("#email").val();
        
         if(/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(email)) {
         alert('WELCOME');
-        }else{alert('enter valid mail');//
+        }else{alert('enter valid mail');
         window.location.replace('login.html');}}  
-	           
+	 
+                
+      function fetchDataOne(){
+	   var url = "fetchwishvile.php";
+	var myemail = decodeURI(getUrlVars()["nemail"]);
+	//alert(myemail);
+	$.getJSON(url,{myemail:myemail}, function(result) {
+	             $.ajaxSetup({ cache: true });
+                console.log(result);
+                $.each(result, function(i, field) {
+                    var id2 = field.id;
+					var Email = field.Email;
+                    var comment = field.comment;
+                    var uploadedamout = field.file;
+                    var price = field.area1;
+					var status = field.material;
+					var pay_total = field.pay_total;
+					var sub_type = field.sub_type;
+					var Duration = field.duration;
+					var totally = field.totally;
+					var authorization_code = field.authorization_code;
+					var card_bin = field.card_bin;
+					var card_bank = field.card_bank;
+					var card_type = field.card_type;
+					//$("#cardtype").val(autorization_code);
+					var others = field.others;
+                    //var CI = total.toFixed();
+                    
+						
+						$("#cardtype").append("<option value='"+ authorization_code+"'>" +card_bank+","+card_type+","+card_bin+"</option>");
+						$("#comment_dbase").append("<option value='"+ comment+"'>" +comment+"</option>");
+	
+                });});}          
+                
     $(document).on("click",".btn-success", function(){
     var id = $(this).data('id');
     var naira = $("#ide").val(id); 
      var myemail = $("#email").val();
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/fetchvalue.php",
+      url : "fetchvalue.php",
       type : "POST",
       cache: false,
       data : {id:id,myemail:myemail},
       beforeSend:function() {
                         // $("#loader").modal('show');
-	                    document.getElementById("overlay").style.display = "block";
+	       
                         $("#convert_button").hide();
                         //$("#item").show();
                        // $("#convert_button").val("loading...");
                     },
       success:function(data){//alert(data);
-      document.getElementById("overlay").style.display = "none";
       $("#naira").val(data );
       $("#convert_button").show();
       $("#convert_button").val("convert");
@@ -371,8 +402,7 @@ border: 1px solid #555;
 			fetchquadpaybalance(); 
             fetchTotal(); 
             loadSummary();
-            getIP();
-            //fetchloadserver();
+            fetchloadserver();
         }   
         
        
@@ -385,25 +415,25 @@ border: 1px solid #555;
      var devr = parser.getUA();
         //alert(devr);
          var myemail = decodeURI(getUrlVars()["nemail"]);
-         var devicee = devr;
+         var device = devr;
         var code = decodeURI(getUrlVars()["code"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetch_me.php",
+      url  : "fetch_me.php",
       type : "GET",
       cache: false,
-      data : {myemail:myemail,device:devicee,code:code},
+      data : {myemail:myemail,device:device,code:code},
       success:function(data){
-          if(data==="error" ){alert('Unreconnized Device found');$("#confirmdevice_error").modal();
+          if(data==="error" ){//alert('no account found');
            $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetch_melog.php",
+      url  : "fetch_melog.php",
       type : "GET",
       cache: false,
-      data : {myemail:myemail,device:devicee,code:code},
+      data : {myemail:myemail,device:device,code:code},
       success:function(data){
         
         
       }});
-          //window.location.replace('login.html');
+          window.location.replace('login.html');
       }
       else{ 
         $("#gallery").html(data);}
@@ -415,20 +445,19 @@ border: 1px solid #555;
    
      function fetchinfo1(){
         var myemail = decodeURI(getUrlVars()["nemail"]);
-        var deviceD = $("#device").val();
+        var device = $("#device").val();
         //var dollartotal = $("#dolar").val();
         //var nairatotal = $("#naira").val();
         //var nairatotal = document.getElementById("naira").value;
         var code = decodeURI(getUrlVars()["code"]);//alert(dollartotal);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetchinfo.php",
+      url  : "fetchinfo.php",
       type : "GET",
       cache: false,
-      data : {myemail:myemail,device:deviceD,code:code},
+      data : {myemail:myemail,device:device,code:code},
       success:function(data){//alert(data);
-      if(data==="error" ){window.removeEventListener("click", window.location.replace('login.html'));alert('no account found');
-      
-        
+      if(data==="error" ){alert('no account found');
+        window.location.replace('login.html');
           
       }
        else {//alert('yep');
@@ -436,26 +465,41 @@ border: 1px solid #555;
       const CSdata_Array = CSdata.split(",");
      var TRUE_email =CSdata_Array[2]; 
      var TRUE_surname =CSdata_Array[0]; var TRUE_name =CSdata_Array[1];var TRUE_Reg =CSdata_Array[3];
-         let Acc_no = TRUE_Reg.length;
          document.getElementById("name").innerHTML ="welcome:  "+TRUE_surname+" "+TRUE_name +"!";
-         
-     if (Acc_no >= 10){//document.getElementById('disz').style.display ='none';
-         document.getElementById('disz').innerHTML ='wema bank...';
-         document.getElementById('disz').style.fontSize ='12';
-         document.getElementById("RegN0").innerHTML ="acc_no :"+TRUE_Reg+"  " ;
-     }
-     else{document.getElementById('disz').style.display ='block';
-     document.getElementById("RegN0").innerHTML ="acc_id :"+TRUE_Reg+"  " ;}
-          }
+         document.getElementById("RegN0").innerHTML ="acc_id :"+TRUE_Reg+"  " ;
+                }
         
       }
     });}
     
-  function getIP(json) {
-    document.getElementById("text").value = JSON.stringify(json, null, 2);
-    document.getElementById("text2").value = json.ip; 
-    document.getElementById("address").value = (json.city)+","+(json.region); 
-      }  
+    function fetchinfo(){
+	   var url = "fetchinfo.php";
+	var myemail = $("#email").val();
+	//alert(myemail);
+	$.getJSON(url,{myemail:myemail}, function(result) {
+	             $.ajaxSetup({ cache: false });
+                console.log(result);
+                $.each(result, function(i, field) {
+                    var id2 = field.id;
+					var Email = field.nemail;
+                    var address = field.address;
+                    var password = field.password;
+                    var price = field.area1;
+					var name = field.name;
+					var Surname = field.Surname;
+					var phone = field.phone;
+					$("#name").append("<p>" +Surname+"</p>");
+						$("#comment_dbase").append("<option value='"+ comment+"'>" +comment+"</option>");
+	if(Email != myemail ){
+          //alert('enter valid mail');
+        window.location.replace('login.html'); 
+                }else if(Email == myemail ){//alert('WELCOME'+Surname);
+                }
+    
+                });});
+    
+    
+  }
   
   
   function locat(){if (navigator.geolocation) {
@@ -467,7 +511,8 @@ function success(position) {
 	var myLat = position.coords.latitude;
    var myLng = position.coords.longitude;
    $("#myLat").val(myLat);$("#myLng").val(myLng);
-   
+   var myLng = $("#myLng").val(); 
+    var myLat = $("#myLat").val();
    //alert(myLat);alert(myLng);
 }
  var options = {
@@ -509,7 +554,7 @@ function success(position) {
   function fetchloadserver(){
          var check_in = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/updatefromFLUTTERserver.php",
+      url  : "updatefromFLUTTERserver.php",
       type : "POST",
       cache: false,
       data : {checkIN:check_in},
@@ -524,7 +569,7 @@ function success(position) {
   function fetchTotal(){
          var myemail = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetchwishvileTotal.php",
+      url  : "fetchwishvileTotal.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail},
@@ -537,7 +582,7 @@ function success(position) {
   function fetchquadpaybalance(){
          var myemail = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/quadpayfetch.php",
+      url  : "quadpayfetch.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail},
@@ -562,7 +607,7 @@ function success(position) {
    
     //confirm(duration+t2)
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/planb.php",
+      url : "planb.php",
       type : "POST",
       cache: false,
       data : {t1:t1,t2:t2,duration:duration},
@@ -585,7 +630,7 @@ function success(position) {
    // document.getElementById("dollarnow").innerHTML ="the rate of: N"+dollar11+"\nthe new Amount: "+newdollarValue;
         if (confirm("PLS NOTE:\n 1. To convert to naira it's effected after 24Hrs\n 2. "+say+naira_amout+say2)){
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/dollarconverter.php",
+      url : "dollarconverter.php",
       type : "POST",
       cache: false,
       data : {dollar:dollar11,naira_amout:naira_amout,id:id,Cmail:mmail},
@@ -608,13 +653,13 @@ function success(position) {
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/fetchpassword.php",
+      url : "fetchpassword.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1},
       beforeSend:function() {
                         
-                       
+                        $("#updatedata").val("some moment...");
                     },
       success:function(data){//alert(data);
        //document.getElementById("checkpassword").innerHTML = data;   
@@ -630,17 +675,16 @@ function success(position) {
     checkpassword = $("#checkpassword").val();
     if (password===checkpassword){
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/updatedata.php",
+      url : "updatedata.php",
       type : "POST",
-      cache: true,
+      cache: false,
       data : {mail:mail,device2:device2,password:password},
       beforeSend:function() {
                         
                         $("#updatedata").val("wait...");
-                        document.getElementById("overlay").style.display = "block";
                     },
       success:function(data){//alert(data);
-          document.getElementById("overlay").style.display = "none";
+          
         $("#dataserv").html(data);
         
         //$("#convert_button").val('convert');
@@ -652,55 +696,24 @@ function success(position) {
   }}
   
   
- 
-    function confirmdevice(){
-    var updatedevicemail = decodeURI(getUrlVars()["nemail"]);
-    var deviceupdate2 = $("#device").val();
-    var mailtokenIN = $("#mailtoken").val();
-    $("#updateconfirmdevice").val(deviceupdate2);
-    
-    if (mailtokenIN === 'null'||mailtokenIN === '0'||mailtokenIN === 'undefined'||mailtokenIN === ''){alert("Wrong code");
-      //$("#dataserv").html("Wrong Password");;
-  }else{
-    $.ajax({
-      url : "https://wish.designsandsystems.com.ng/UpdateDevice.php",
-      type : "POST",
-      cache: true,
-      data : {maildevice:updatedevicemail,deviceupd:deviceupdate2,INcode:mailtokenIN},
-      beforeSend:function() {
-                        document.getElementById("overlay").style.display = "block";
-                        //$("#updatedata").val("wait...");
-                    },
-      success:function(data){document.getElementById("overlay").style.display = "none";if (data=="success"){
-          alert("successful device updated PLEASE RElogin");
-          window.location.replace('login.html');
-          $("#confirmdevice_error").modal('hide');
-        //$("#dataserv").html(data);alert(data);localStorage.setItem("code", data);
-        }else{alert("WRONG code/device PLEASE RElogin");
-          window.location.replace('login.html');}
-        
-       
-      }
-    });
-  } }
+  
   
   
  $(document).on('click',"#btn",function(){
     var id = $(this).attr("data-id");
      var myemail = $("#email").val();
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/detail.php",
+      url : "detail.php",
       type : "POST",
       cache: false,
       data : {id:id,myemail:myemail},
-      beforeSend:function() {
-          document.getElementById("overlay").style.display = "block";
+      beforeSend:function() {//alert(myemail+id);
                        //$("#convert_button").hide();
                         //$("#item").show();
-                        
+                        $("#loading").text("loading...");
                     },
       success:function(data){//alert(data);
-      document.getElementById("overlay").style.display = "none";
+      
      
         $("#newtable").html(data);
         $("#loading").hide();
@@ -777,6 +790,11 @@ function success(position) {
         var samout = $("#samout").val(CI);
     }	
 
+  
+    
+    
+    
+  
 	
 	function OnChange2(value){//x = document.frmOne.material.value;
 	fund();
@@ -786,9 +804,9 @@ function success(position) {
 		var targetamout = document.frmOne.select1.value; 
 		var rate_pice =price*0.05;
 		var iamout = price+rate_pice;
-//	var pay_amout = iamout/durpay_amoutation; document.getElementById("addfund").innerHTML  = "AUTO FUND";
+//	var pay_amout = iamout/durpay_amoutation; 
      document.getElementById("plan").style.backgroundColor = "white"; 
-      
+     document.getElementById("addfund").innerHTML  = "AUTO FUND"; 
      document.getElementById("plan").style.border = "0.5px solid black";
 	$("#plan").val(0);
 	let new_value = targetamout/duration ;
@@ -904,10 +922,10 @@ function success(position) {
 	var address = $("#address").val(); 
 	var  sum= (document.frmOne.price.value);
 	var id = $("#id").val();
-	
+	let myn= "name=: "+name ;let myp= " ,phone=: "+phone;let mya= " ,amout=: "+sum;let myad= ", shipping add=: "+address;let mymail= ", email=: "+email;
 	var myLng = $("#myLng").val(); 
 				var myLat = $("#myLat").val();
-			
+			//alert("PLEASE NOTE the Total Price include Shipment fee of N");
                 var dataString = "email="+email+"&sum="+sum+"&type="+type+"&myLng="+myLng+"&myLat="+myLat+"&ttime="+ttime+"&tr_id="+tr_id+"&area="+area+"&comment="+comment+"&id ="+id +"&maturity="+maturity+"&area="+area+"&transprice="+transprice+"&submit2=";
                 if(maturity=='0'){
                     navigator.vibrate([1000]);alert("please chose TENURE");
@@ -916,7 +934,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "https://wish.designsandsystems.com.ng/submit.php",
+                    url: "submit.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -926,7 +944,9 @@ function success(position) {
                     success: function(data) {//alert(data);
                         if (data == "success") {
                             fetchData();payWithPaystack(); 
-                      
+                    $("#fixed_add").animate({height:["toggle","swing" ], width:["toggle","swing" ]}, {duration:5000, easing:"linear"});
+        $("#fixed_add").modal('hide');
+                            
                             //alert("submited");
                             $("#submit2").val("submited");
                         } else if (data == "error") {
@@ -952,7 +972,7 @@ function success(position) {
     dday.setMonth(11);
 	var tt =$("#k").val();
 	var ta =tt;
-	let say= "youre funding ur WishVillewallet account with: N";
+	let say= "youre funding ur wallet account with:N";
 	//submit2();
 	
 	if(confirm(say+sum1)
@@ -982,7 +1002,7 @@ function success(position) {
      //alert(authorization);
      
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/verifypay.php",
+      url : "verifypay.php",
       type : "POST",
       cache: false,
       data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
@@ -1038,7 +1058,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "https://wish.designsandsystems.com.ng/cardless_charge.php",
+                    url: "cardless_charge.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -1059,6 +1079,8 @@ function success(position) {
                     }
                 });}
 	     }else if (totalpay<100){ alert("please dear enter target amout no less than #2000");}}}
+  
+  
   
   
   
@@ -1106,10 +1128,11 @@ function success(position) {
                     crossDomain: true,
                     cache: false,
                     beforeSend: function() {
-                        
+                        $("#addfund").text('wait..');
                     },
                     success: function(data) {fetchData();payWithPaystack3();
-                    
+                    $("#fixed_add").animate({height:["toggle","swing" ], width:["toggle","swing" ]}, { easing:"linear"});
+        $("#fixed_add").modal('hide');
         //alert(data);
                         if (data == "success") {
                             
@@ -1164,7 +1187,7 @@ function success(position) {
      //alert(authorization);
      
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/verifypay.php",
+      url : "verifypay.php",
       type : "POST",
       cache: false,
       data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
@@ -1202,14 +1225,16 @@ function success(position) {
       cache: false,
       data : {mmail:mmail,device1:device1},
       beforeSend:function() {
-                      
+                        
+                        $("#loading").text("some moment...");
                     },
       success:function(data){//alert(data);
        //document.getElementById("checkpassword").innerHTML = data;   
         $("#quadpaycheckpassword").val(data); $("#loading").modal('hide');
       }
     });
-  }	
+  }
+  
   
   function fetchstarplace(){
     var mamail = decodeURI(getUrlVars()["nemail"]);
@@ -1242,8 +1267,8 @@ function success(position) {
       cache: false,
       data : {SUMmail:SUM_mail,SUMdevice:SUM_device,SUMid:SUM_id},
       beforeSend:function() {
-                        //alert (SUM_mail);$("#loading").text("some moment...");
-                        
+                        //alert (SUM_mail);
+                        $("#loading").text("some moment...");
                     },
       success:function(data){
        //document.getElementById("summary").innerHTML = data;   
@@ -1254,28 +1279,28 @@ function success(position) {
   
   
   function quadpaybillairtime(){
-      $("#billchoice").val("airtime=1");$("#billgroup").val("Mobile Number");
+      $("#billchoice").val("airtime=1");
         fetchquadpayload();
   }
   
    function quadpaybilldata(){
-      $("#billchoice").val("data_bundle=1");$("#billgroup").val("Mobile Number");
+      $("#billchoice").val("data_bundle=1");
         fetchquadpayload();
   }
    function quadpaybillpower(){
-      $("#billchoice").val("power=1");$("#billgroup").val("Meter Number");
+      $("#billchoice").val("power=1");
         fetchquadpayload();
   }
    function quadpaybillcable(){
-      $("#billchoice").val("cables=1");$("#billgroup").val("SmartCard Number");
+      $("#billchoice").val("cables=1");
         fetchquadpayload();
   }
    function quadpaybillinternet(){
-      $("#billchoice").val("internet=1");$("#billgroup").val("Account Number");
+      $("#billchoice").val("internet=1");
         fetchquadpayload();
   }
    function quadpaybillothers(){
-      $("#billchoice").val("toll=1");$("#billgroup").val("Number");
+      $("#billchoice").val("toll=1");
         fetchquadpayload();
   }
   
@@ -1330,7 +1355,7 @@ function success(position) {
     });
   }
   
-   function quadpayINtransfer(){
+    function quadpayINtransfer(){
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
    var Lnong  = $("#myLng").val();
@@ -1365,20 +1390,36 @@ function success(position) {
       cache: false,
       data : {mmail:mailm,device1:device2,password:password},
       beforeSend:function() {
-                        document.getElementById("overlay").style.display = "block";
-                       
+                        
+                        $("#loading").text("wait...");
                     },
       success:function(data){//alert(data);
-          document.getElementById("overlay").style.display = "none";
+          
         $("#quadpay").html(data);
         
+        //$("#convert_button").val('convert');
         $("#loading").modal('hide');
       }
     });
   }else {alert("Wrong Password");}}	
   
   
- 	  
+ function quadpayrrr(){
+	 var mailm = decodeURI(getUrlVars()["nemail"]);
+    var device2 = $("#device").val();
+    var fluterquad_amount = 100; 
+    var fluterquad_trxn  = "17864429831";
+    $.ajax({
+      url : "https://wish.designsandsystems.com.ng/quadpayFLUTERverify.php",
+      type : "POST",
+      cache: false,
+      data : {mmail:mailm,trans_id:fluterquad_trxn,fluterquadamount:fluterquad_amount},
+      beforeSend:function() {alert(fluterquad_trxn );
+                    },
+      success:function(data){alert(data);
+       fetchData();   
+      }
+    });	}	  
 			  
 
 
@@ -1409,9 +1450,9 @@ function success(position) {
       type : "POST",
       cache: false,
       data : {mmail:mailm,trans_id:fluterquad_trxn,fluterquadamount:fluterquad_amount},
-      beforeSend:function() {document.getElementById("overlay").style.display = "block";
+      beforeSend:function() {
                     },
-      success:function(data){document.getElementById("overlay").style.display = "none";
+      success:function(data){alert(data);
       location.reload();
        fetchData();   
       }
@@ -1623,7 +1664,7 @@ function success(position) {
           <h4 class="modal-title">DETAIL</h4>
         </div>
         <div id="newtable"  class="modal-body">
-           <p id="loading"></p>
+           
         
          </div>
         
