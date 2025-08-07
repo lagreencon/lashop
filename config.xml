@@ -35,7 +35,11 @@
  <access origin="https://api.flutterwave.com/v3" />
 <access origin="https://api.flutterwave.com/v3/transfers" />
 <allow-navigation href="https://api.flutterwave.com/*" />
-        
+        <allow-intent href="*://*.flutterwave.com/*" />
+     <allow-navigation href="*://*.flutterwave.com/*" />  
+        <allow-navigation href="*" />
+        <access origin="https://*.flutterwave.com" />
+        <access origin="*" />
 </platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
