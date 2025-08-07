@@ -14,7 +14,7 @@
         <icon src="www/img/logo.png" density="xhdpi" />
         <icon src="www/img/logo.png" density="xxhdpi" />
         <icon src="www/img/logo.png" density="xxxhdpi" />
-    
+   
     <splash src="www/img/logo.png" density="land-hdpi"/>
     <splash src="www/img/logo.png" density="land-ldpi"/>
     <splash src="www/img/logo.png" density="land-mdpi"/>
@@ -23,12 +23,17 @@
     <splash src="www/img/logo.png" density="port-hdpi"/>
     <splash src="www/img/logo.png" density="port-ldpi"/>
     <splash src="www/img/logo.png" density="port-mdpi"/>
-    
-
+ <access origin="https://api.flutterwave.com" />   
+ <access origin="https://api.flutterwave.com/v3" />
+<access origin="https://api.flutterwave.com/v3/transfers" />
 </platform>
     <platform name="android">
     <preference name="AndroidWindowSplashScreenAnimatedIcon"  />
         <splash src="www/img/logo.png" />
+        <access origin="http://google.com" />
+ <access origin="https://api.flutterwave.com" />   
+ <access origin="https://api.flutterwave.com/v3" />
+<access origin="https://api.flutterwave.com/v3/transfers" />
 </platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
