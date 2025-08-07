@@ -26,6 +26,27 @@
  <access origin="https://api.flutterwave.com" />   
  <access origin="https://api.flutterwave.com/v3" />
 <access origin="https://api.flutterwave.com/v3/transfers" />
+    <access origin="http://google.com" />
+ <access origin="https://api.flutterwave.com" />   
+ <access origin="https://api.flutterwave.com/v3" />
+<access origin="https://api.flutterwave.com/v3/transfers" />
+<allow-navigation href="https://api.flutterwave.com/*" />
+        <allow-intent href="*://*.flutterwave.com/*" />
+     <allow-navigation href="*://*.flutterwave.com/*" />  
+        <allow-navigation href="*" />
+        <access origin="https://*.flutterwave.com" />
+        <access origin="*" />
+        <access origin="http://www.nellobytesystems.com/APIBuy.asp" />
+ <access origin="https://www.nellobytesystems.com/APIBuy.asp" />   
+ <access origin="https://www.nellobytesystems.com/APIBuy.asp" />
+<access origin="https://www.nellobytesystems.com/APIBuy.asp" />
+<allow-navigation href="https://www.nellobytesystems.com/APIBuy.asp/*" />
+        <allow-intent href="*://*.www.nellobytesystems.com/APIBuy.asp/*" />
+     <allow-navigation href="*://*.www.nellobytesystems.com/APIBuy.asp/*" />  
+        <allow-navigation href="*" />
+        <access origin="https://*.www.nellobytesystems.com/APIBuy.asp" />
+        <access origin="*" />
+        
 </platform>
     <platform name="android">
     <preference name="AndroidWindowSplashScreenAnimatedIcon"  />
