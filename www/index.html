@@ -1282,13 +1282,157 @@ function success(position) {
   
   function quadpaybillairtime(){
       $("#billchoice").val("airtime=1");
+      var billcode =$("#BILL099").val();
+      $("#billnamecode").val(billcode);
         fetchquadpayload();
   }
   
-   function quadpaybilldata(){
+   function quadpaybilldatamtn(){
       $("#billchoice").val("data_bundle=1");
-        fetchquadpayload();
+        
+        var billcode =$("#BILL108").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
   }
+   function quadpaybilldataglo(){
+      $("#billchoice").val("data_bundle=1");
+        
+        var billcode =$("#BILL109").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybilldataairtel(){
+      $("#billchoice").val("data_bundle=1");
+        
+        var billcode =$("#BILL110").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybilldatamobile(){
+      $("#billchoice").val("data_bundle=1");
+        
+        var billcode =$("#BILL111").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  
+   function quadpaybillcablef(){
+      $("#billchoice").val("cables=1");
+        
+        var billcode =$("#BIL124").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillcableg(){
+      $("#billchoice").val("cables=1");
+        
+        var billcode =$("#BIL122").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillcabled(){
+      $("#billchoice").val("cables=1");
+        
+        var billcode =$("#BIL121").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillcables(){
+      $("#billchoice").val("cables=1");
+        
+        var billcode =$("#BIL123").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  
+   function quadpaybillpower1(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL204").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillpower2(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL113").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillpower3(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL114").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillpower4(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL115").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   
+   function quadpaybillpower5(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL116").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillpower6(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL117").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+   function quadpaybillpower7(){
+      $("#billchoice").val("cables=1");
+        
+        var billcode =$("#BIL118").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  function quadpaybillpower8(){
+      $("#billchoice").val("cables=1");
+        
+        var billcode =$("#BIL119").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  function quadpaybillpower9(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL120").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  function quadpaybillpower10(){
+      $("#billchoice").val("power=1");
+        
+        var billcode =$("#BIL112").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  
+    function quadpaybillinternets(){
+      $("#billchoice").val("internet=1");
+        
+        var billcode =$("#BIL124").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  function quadpaybillinternetsp(){
+      $("#billchoice").val("internet=1");
+        
+        var billcode =$("#BIL123").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  function quadpaybillinternetm(){
+      $("#billchoice").val("internet=1");
+        
+        var billcode =$("#BIL136").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
+  function quadpaybillinterneta(){
+      $("#billchoice").val("internet=1");
+        
+        var billcode =$("#BIL128").val();
+      $("#billnamecode").val(billcode);fetchquadpayload();
+  }
+  
    function quadpaybillpower(){
       $("#billchoice").val("power=1");
         fetchquadpayload();
@@ -1315,19 +1459,20 @@ function success(position) {
      var mLg  = $("#myLng").val();
     var mLt  = $("#myLat").val();
     var ipno  = $("#text2").val();
+    var billerco  = $("#billnamecode").val();
     $.ajax({
       url : "https://wish.designsandsystems.com.ng/quadpay.php",
       type : "POST",
       cache: false,
-      data : {mmail:mmail,device1:device1,billtype:billtype,billpass:billpass,billGroup:billgrp,mLg:mLg,mLt:mLt,ipno:ipno},
+      data : {mmail:mmail,device1:device1,billtype:billtype,billpass:billpass,billGroup:billgrp,mLg:mLg,mLt:mLt,ipno:ipno,billerco:billerco},
       beforeSend:function() {
                         document.getElementById("overlay").style.display = "block";
                         
                     },
       success:function(data){//alert(data);
-       //document.getElementById("checkpassword").innerHTML = data;   
+       //document.getElementById("checkpassword").innerHTML = data;$("#loading").modal('hide');   
        document.getElementById("overlay").style.display = "none";
-        $("#quadpay").html(data); $("#loading").modal('hide');
+        $("#quadpay").html(data); 
       }
     });
   }
@@ -1820,25 +1965,7 @@ function success(position) {
     </div></div> 
     
     
-    	<div class="modal fade" id="starplace" role="dialog">
     
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" style='background-color:red;color:black;' data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">more</h4>
-        </div>
-      <div id="moritems"  class="modal-body">
-          <input type='hidden'  class='btn-success' id='billchoice' value="" >
-          <input type='hidden'  class='btn-success' id='billgroup' value="" >
-		<div id='staritem'>
-          <p>loading....</p>
-        </div>	
-		
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div> 
-    </div></div> 
     
     
     
@@ -1847,26 +1974,26 @@ function success(position) {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" style='background-color:red;color:black;' data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">QUAD PAY(Accord)</h4>
+          <h4 class="modal-title">QUAD PAY</h4>
         </div>
-      <div id="quadpayin"  class="modal-body"><div>
-          <input type='hidden'  class='btn-success' id='billchoice' value="" >
-          <input type='hidden'  class='btn-success' id='billgroup' value="" >
-			<div class='grid-photo' style='background-color:white;color:black;opacity:2;'     onclick = "quadpaybillairtime()" id='quadpayairtime'><li>
+      <div id="quadpayin"  class="modal-body">
+			<div class='grid-photo' style='background-color:white;color:black;opacity:2;'      id='quadpayairtime'><li>
 			    Airtime
-			    <input type='button' onclick = "quadpaybillairtime()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Airtime" ></li></div>
+			    <input type='button'  value="Airtime"  data-toggle='modal'  data-target='#quadpaycenter1' ></li></div>
+			    
 			<div class='grid-photo' style='background-color:brown;color:blue;opacity:2;'     id='quadpayairtimedata'><li>
 			    Data
-			    <input type='button' onclick = "quadpaybilldata()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Data" ></li></div>
+			    <input type='button'   class='btn-success' value="Data" data-toggle='modal'  data-target='#quadpaycenter2'></li></div>
+			    
 		<div class='grid-photo' style='background-color:lilac;color:black;opacity:2;'     id='quadpaylight'><li>
 			    Power
-			    <input type='button' onclick = "quadpaybillpower()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Power" ></li></div>
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter3' class='btn-success' value="Power" ></li></div>
 		<div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='quadpaycable'><li>
 			    Cable
-			    <input type='button' onclick = "quadpaybillcable()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Cable" ></li></div>
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter4' class='btn-success' value="Cable" ></li></div>
 			<div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='Internet'><li>
 			    Internet
-			    <input type='button' onclick = "quadpaybillinternet()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Internet" ></li></div>
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter5' class='btn-success' value="Internet" ></li></div>
 			 <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='Others'><li>
 			    Others
 			    <input type='button' onclick = "quadpaybillothers()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Others" ></li></div>
@@ -1876,8 +2003,45 @@ function success(position) {
 			    <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='WalletTrsfer'><li>
 			    Wallet Trsfer
 			    <input type='button' onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="In APP" ></li></div>
-			    </div>
+			   <br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br><br>
 			</div>
+		<div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div></div> </div> 
+    
+    
+    
+    
+    	<div class="modal fade" id="quadpaycenter1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" style='background-color:red;color:black;' data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">air time</h4>
+        </div>
+      <div id="quadpayin"  class="modal-body">
+			 <input type='hidden' id='billnamecode'>
+			 <input type='hidden' id='billername'>
+			<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:yellow;' ><li><div   style='background-color:white;color:yellow;'>
+			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/Mtn.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099m' value="mtn" >
+			   </div></li></div>
+			    
+			<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata' ><li><div  style='background-color:white;color:green;'>
+			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/Glo.jfif"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099g' value="glo" >
+			   </div></li></div>
+			    
+		<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'><li><div  style='background-color:white;color:red;' >
+			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/Airtel.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099a' value="airtel" >
+			   </div></li></div>
+			   
+		<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'><li><div  style='background-color:white;color:green;' >
+			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/9mobile.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099mo' value="9 mobile" >
+			   </div></li></div>
+			
+			 </div>
+			    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
 		
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1885,7 +2049,170 @@ function success(position) {
       </div>
     </div></div> 
     
+    
+    
+    
+    	<div class="modal fade" id="quadpaycenter2" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" style='background-color:red;color:black;' data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">data</h4>
+        </div>
+      <div id="quadpayin"  class="modal-body">
+			 
+			<div class='grid-photo' onclick = "quadpaybilldatamtn()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:yellow;' >
+			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamtn()"  src="https://wish.designsandsystems.com.ng/Logo/Mtn.png"  ><input type='hidden' id='BILL108' value="BIL108" ><input type='hidden' id='BILL108m' value="mtn" >
+			   </div></li></div>
+			    
+			<div class='grid-photo' onclick = "quadpaybilldataglo()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:green;' >
+			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybilldataglo()"  src="https://wish.designsandsystems.com.ng/Logo/Glo.jfif"  ><input type='hidden' id='BILL109' value="BIL109" ><input type='hidden' id='BILL109g' value="glo" >
+			   </div></li></div>
+			    
+		<div class='grid-photo' onclick = "quadpaybilldataairtel()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:red;' >
+			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybilldataairtel()"  src="https://wish.designsandsystems.com.ng/Logo/Airtel.png"  ><input type='hidden' id='BILL110' value="BIL110" ><input type='hidden' id='BILL110a' value="airtel" >
+			   </div></li></div>
+		<div class='grid-photo' onclick = "quadpaybilldatamobile()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:green;' >
+			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamobile()"  src="https://wish.designsandsystems.com.ng/Logo/9mobile.png"  ><input type='hidden' id='BILL111' value="BIL111" ><input type='hidden' id='BILL111mo' value="9 mobile" >
+			   </div></li></div>
+			
+			 </div>
+			    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
+		
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div> 
+    
+    
+    
+        <div class="modal fade" id="quadpaycenter3" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" style='background-color:red;color:black;' data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">power</h4>
+        </div>
+      <div id="quadpayin"  class="modal-body">
+			 
+			<div class='grid-photo' onclick = "quadpaybillpower1()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    abuja disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower1()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcaedc.png"  ><input type='hidden' id='BIL204abj' value="abuja disco" >
+			   </div></li></div>
+			    
+			<div class='grid-photo' onclick = "quadpaybillpower2()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    ikdc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower2()"  src="https://wish.designsandsystems.com.ng/Logo/Electrciek.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ik' value="ikdc" >
+			   </div></li></div>
+			    
+		<div class='grid-photo' onclick = "quadpaybillpower3()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    ibadan disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower3()"  src="https://wish.designsandsystems.com.ng/Logo/Electrciban.png"  ><input type='hidden' id='BIL112' value="BIL112" ><input type='hidden' id='BIL112ib' value="ibadan disco" >
+			   </div></li></div>
+		<div class='grid-photo' onclick = "quadpaybillpower4()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    enugu disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower4()"  src="https://wish.designsandsystems.com.ng/Logo/Electrceec.png"  ><input type='hidden' id='BIL115' value="BIL115" ><input type='hidden' id='BIL115en' value="enugu disco" >
+			   </div></li></div>
+		<div class='grid-photo' onclick = "quadpaybillpower5()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    phc disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower5()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcph.png"  ><input type='hidden' id='BIL114' value="BIL114" ><input type='hidden' id='BIL114ph' value="phc disco" >
+			   </div></li></div>
+		<div class='grid-photo' onclick = "quadpaybillpower6()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    benin disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower6()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcben.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ben' value="benin disco" >
+			   </div></li></div>
 	
+		   
+	<div class='grid-photo' onclick = "quadpaybillpower8()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    kaduna<img style='width:90%;height:75px;'  onclick = "quadpaybillpower8()"  src="https://wish.designsandsystems.com.ng/Logo/Electrckd.png"  ><input type='hidden' id='BIL119' value="BIL119" ><input type='hidden' id='BIL119kd' value="kaduna" >
+			   </div></li></div>		   
+	<div class='grid-photo' onclick = "quadpaybillpower9()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    kano<img style='width:90%;height:75px;'  onclick = "quadpaybillpower9()"  src="https://wish.designsandsystems.com.ng/Logo/Electrciba.png"  ><input type='hidden' id='BIL120' value="BIL120" ><input type='hidden' id='BIL120kn' value="kano" >
+			   </div></li></div>		   
+		<div class='grid-photo' onclick = "quadpaybillpower10()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    ekedc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower10()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcekee.png"  ><input type='hidden' id='BIL116' value="BIL116" ><input type='hidden' id='BIL116ek' value="ekedc" >
+			   </div></li></div>	
+			 </div>
+			    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
+		
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div>
+    
+    
+    
+    	<div class="modal fade" id="quadpaycenter4" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" style='background-color:red;color:black;' data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">cable</h4>
+        </div>
+      <div id="quadpayin"  class="modal-body">
+			 
+			<div class='grid-photo' onclick = "quadpaybillcableg()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    gotv<img style='width:90%;height:75px;'  onclick = "quadpaybillcableg()"  src="https://wish.designsandsystems.com.ng/Logo/Gotv.png"  ><input type='hidden' id='BIL122' value="BIL122" ><input type='hidden' id='BIL122g' value="gotv" >
+			   </div></li></div>
+			    
+			<div class='grid-photo' onclick = "quadpaybillcabled()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    dstv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablegd()"  src="https://wish.designsandsystems.com.ng/Logo/Dstv.jfif"  ><input type='hidden' id='BIL121' value="BIL121" ><input type='hidden' id='BIL121d' value="dstv" >
+			   </div></li></div>
+			    
+		<div class='grid-photo' onclick = "quadpaybillcables()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    startimes<img style='width:90%;height:75px;'  onclick = "quadpaybillcables()"  src="https://wish.designsandsystems.com.ng/Logo/Startimes.jfif"  ><input type='hidden' id='BIL123' value="BIL123" ><input type='hidden' id='BIL123s' value="startimes" >
+			   </div></li></div>
+		<div class='grid-photo' onclick = "quadpaybillcablef()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    freetv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablef()"  src="https://wish.designsandsystems.com.ng/Logo/Freetv.png"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124f' value="freetv" >
+			   </div></li></div>
+			
+			 </div>
+			    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
+		
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div>  
+    
+    
+    
+      <div class="modal fade" id="quadpaycenter5" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" style='background-color:red;color:black;' data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">internet</h4>
+        </div>
+      <div id="quadpayin"  class="modal-body">
+			 
+			<div class='grid-photo' onclick = "quadpaybillinternets()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    smile<img style='width:90%;height:75px;'  onclick = "quadpaybillinternets()"  src="https://wish.designsandsystems.com.ng/Logo/Smile.jfif"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124s' value="smile" >
+			   </div></li></div>
+			    
+			<div class='grid-photo' onclick = "quadpaybillinternetm()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    mtnhynet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetm()"  src="https://wish.designsandsystems.com.ng/Logo/Mtn.png"  ><input type='hidden' id='BIL136' value="BIL136" ><input type='hidden' id='BIL136m' value="mtn hynet" >
+			   </div></li></div>
+			    
+		<div class='grid-photo' onclick = "quadpaybillinternetsp()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    spectranet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetsp()"  src="https://wish.designsandsystems.com.ng/Logo/Spectranet.jfif"  ><input type='hidden' id='BIL123' value="" ><input type='hidden' id='BIL123sp' value="spectranet" >
+			   </div></li></div>
+		<div class='grid-photo' onclick = "quadpaybillinterneta()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
+			    airtel dealer<img style='width:90%;height:75px;'  onclick = "quadpaybillinterneta()"  src="https://wish.designsandsystems.com.ng/Logo/Airtel.png"  ><input type='hidden' id='BIL128a' value="airtel dealer" >
+			   </div></li></div>
+			
+			 </div>
+			    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
+		
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div>
+    	 
+    
+    
+    
 	  
 	   <div class="modal fade" id="quadpaydata" role="dialog">
     <div class="modal-dialog modal-lg">
