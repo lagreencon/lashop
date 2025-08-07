@@ -37,4 +37,6 @@
 </platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+<allow-intent href="https://api.flutterwave.com/*" />
+    
 </widget>
