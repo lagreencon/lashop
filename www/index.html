@@ -347,7 +347,7 @@ border: 1px solid #555;
     var naira = $("#ide").val(id); 
      var myemail = $("#email").val();
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/fetchvalue.php",
+      url : "fetchvalue.php",
       type : "POST",
       cache: false,
       data : {id:id,myemail:myemail},
@@ -389,7 +389,7 @@ border: 1px solid #555;
          var devicee = devr;
         var code = decodeURI(getUrlVars()["code"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetch_me.php",
+      url  : "fetch_me.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail,device:devicee,code:code},
@@ -400,7 +400,7 @@ border: 1px solid #555;
       success:function(data){
           if(data==="error" ){alert('Unreconnized Device found');$("#confirmdevice_error").modal();
            $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetch_melog.php",
+      url  : "fetch_melog.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail,device:devicee,code:code},
@@ -426,7 +426,7 @@ border: 1px solid #555;
         var ip = $("#text2").val();var text22 = $("#text22").val();
         var code = decodeURI(getUrlVars()["code"]);//alert(text22);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetchinfo.php",
+      url  : "fetchinfo.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail,device:deviceD,code:code,IP:text22},
@@ -467,7 +467,7 @@ border: 1px solid #555;
       //$("#dataserv").html("Wrong Password");;
   }else{
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/UpdateDevice.php",
+      url : "UpdateDevice.php",
       type : "POST",
       cache: true,
       data : {maildevice:updatedevicemail,deviceupd:deviceupdate2,INcode:mailtokenIN},
@@ -540,7 +540,7 @@ function success(position) {
   function fetchloadip(){
          var check_in = decodeURI(getUrlVars()["nemail"]); 
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/Ip.php",
+      url  : "Ip.php",
       type : "POST",
       cache: false,
       data : {checkIN:check_in},
@@ -556,7 +556,7 @@ function success(position) {
   function fetchloadserver(){
          var check_in = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/updatefromFLUTTERserver.php",
+      url  : "updatefromFLUTTERserver.php",
       type : "POST",
       cache: false,
       data : {checkIN:check_in},
@@ -571,7 +571,7 @@ function success(position) {
   function fetchTotal(){
          var myemail = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/fetchwishvileTotal.php",
+      url  : "fetchwishvileTotal.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail},
@@ -584,7 +584,7 @@ function success(position) {
   function fetchquadpaybalance(){
          var myemail = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "https://wish.designsandsystems.com.ng/quadpayfetch.php",
+      url  : "quadpayfetch.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail},
@@ -609,7 +609,7 @@ function success(position) {
    
     //confirm(duration+t2)
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/planb.php",
+      url : "planb.php",
       type : "POST",
       cache: false,
       data : {t1:t1,t2:t2,duration:duration},
@@ -632,7 +632,7 @@ function success(position) {
    // document.getElementById("dollarnow").innerHTML ="the rate of: N"+dollar11+"\nthe new Amount: "+newdollarValue;
         if (confirm("PLS NOTE:\n 1. To convert to naira it's effected after 24Hrs\n 2. "+say+naira_amout+say2)){
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/dollarconverter.php",
+      url : "dollarconverter.php",
       type : "POST",
       cache: false,
       data : {dollar:dollar11,naira_amout:naira_amout,id:id,Cmail:mmail},
@@ -655,7 +655,7 @@ function success(position) {
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/fetchpassword.php",
+      url : "fetchpassword.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1},
@@ -677,7 +677,7 @@ function success(position) {
     checkpassword = $("#checkpassword").val();
     if (password===checkpassword){
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/updatedata.php",
+      url : "updatedata.php",
       type : "POST",
       cache: false,
       data : {mail:mail,device2:device2,password:password},
@@ -705,7 +705,7 @@ function success(position) {
     var id = $(this).attr("data-id");
      var myemail = $("#email").val();
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/detail.php",
+      url : "detail.php",
       type : "POST",
       cache: false,
       data : {id:id,myemail:myemail},
@@ -936,7 +936,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "https://wish.designsandsystems.com.ng/submit.php",
+                    url: "submit.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -1004,7 +1004,7 @@ function success(position) {
      //alert(authorization);
      
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/verifypay.php",
+      url : "verifypay.php",
       type : "POST",
       cache: false,
       data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
@@ -1060,7 +1060,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "https://wish.designsandsystems.com.ng/cardless_charge.php",
+                    url: "cardless_charge.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -1125,7 +1125,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "https://wish.designsandsystems.com.ng/submit.php",
+                    url: "submit.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -1189,7 +1189,7 @@ function success(position) {
      //alert(authorization);
      
      $.ajax({
-      url : "https://wish.designsandsystems.com.ng/verifypay.php",
+      url : "verifypay.php",
       type : "POST",
       cache: false,
       data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
@@ -1222,7 +1222,7 @@ function success(position) {
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/fetchpassword.php",
+      url : "fetchpassword.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1},
@@ -1246,7 +1246,7 @@ function success(position) {
     var myip  = $("#text2").val();
     //alert(myLng1 );alert(myLat1);
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/fetchstarplace.php",
+      url : "fetchstarplace.php",
       type : "POST",
       cache: false,
       data : {mamail:mamail,deviced:deviced,myLng1:myLng1,myLat1:myLat1,myip:myip},
@@ -1264,7 +1264,7 @@ function success(position) {
     var SUM_device = $("#device").val();
     var SUM_id = $("#device").val();
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/summary.php",
+      url : "summary.php",
       type : "POST",
       cache: false,
       data : {SUMmail:SUM_mail,SUMdevice:SUM_device,SUMid:SUM_id},
@@ -1461,7 +1461,7 @@ function success(position) {
     var ipno  = $("#text2").val();
     var billerco  = $("#billnamecode").val();
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/quadpay.php",
+      url : "quadpay.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1,billtype:billtype,billpass:billpass,billGroup:billgrp,mLg:mLg,mLt:mLt,ipno:ipno,billerco:billerco},
@@ -1486,13 +1486,13 @@ function success(position) {
     var ipm  = $("#text2").val();
     var billpass =  $("#checkpassword").val();
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/quadpaytranfer.php",
+      url : "quadpaytranfer.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1,billpass:billpass,myLnong:myLnong,myLatit:myLatit,ipm:ipm},
       beforeSend:function() {
                         document.getElementById("overlay").style.display = "block";
-                        //$("#loading").text("some moment...");
+                        //$("#loading").text("some moment...");alert(billpass);
                     },
       success:function(data){document.getElementById("overlay").style.display = "none";
        //document.getElementById("checkpassword").innerHTML = data;   
@@ -1510,7 +1510,7 @@ function success(position) {
     var ipnow  = $("#text2").val();
     var billpass =  $("#checkpassword").val();
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/quadpayintranfer.php",
+      url : "quadpayintranfer.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1,billpass:billpass,Lnong:Lnong,Latit:Latit,ipnow:ipnow},
@@ -1532,13 +1532,13 @@ function success(position) {
     var mailm = decodeURI(getUrlVars()["nemail"]);
     var device2 = $("#device").val();
     var password = $("#quadpayloginpassword").val();
-    checkpassword = $("#quadpaycheckpassword").val();
+    var checkpassword = $("#quadpaycheckpassword").val();
     var netwk = $("#network").val();
     if (netwk !=0){
     
     if (password===checkpassword){
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/quadpaydata.php",
+      url : "quadpaydata.php",
       type : "POST",
       cache: false,
       data : {mmail:mailm,device1:device2,billpass:password,netwok:netwk},
@@ -1563,7 +1563,7 @@ function success(position) {
     var fluterquad_amount = 100; 
     var fluterquad_trxn  = "17864429831";
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/quadpayFLUTERverify.php",
+      url : "https://designsandsystems.com.ng/quadpayFLUTERverify.php",
       type : "POST",
       cache: false,
       data : {mmail:mailm,trans_id:fluterquad_trxn,fluterquadamount:fluterquad_amount},
@@ -1599,7 +1599,7 @@ function success(position) {
     var mailm = decodeURI(getUrlVars()["nemail"]);
     
     $.ajax({
-      url : "https://wish.designsandsystems.com.ng/quadpayFLUTERverify.php",
+      url : "quadpayFLUTERverify.php",
       type : "POST",
       cache: false,
       data : {mmail:mailm,trans_id:fluterquad_trxn,fluterquadamount:fluterquad_amount},
@@ -2024,19 +2024,19 @@ function success(position) {
 			 <input type='hidden' id='billnamecode'>
 			 <input type='hidden' id='billername'>
 			<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:yellow;' ><li><div   style='background-color:white;color:yellow;'>
-			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/Mtn.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099m' value="mtn" >
+			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/Mtn.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099m' value="mtn" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata' ><li><div  style='background-color:white;color:green;'>
-			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/Glo.jfif"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099g' value="glo" >
+			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/Glo.jfif"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099g' value="glo" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'><li><div  style='background-color:white;color:red;' >
-			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/Airtel.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099a' value="airtel" >
+			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/Airtel.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099a' value="airtel" >
 			   </div></li></div>
 			   
 		<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'><li><div  style='background-color:white;color:green;' >
-			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://wish.designsandsystems.com.ng/Logo/9mobile.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099mo' value="9 mobile" >
+			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/9mobile.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099mo' value="9 mobile" >
 			   </div></li></div>
 			
 			 </div>
@@ -2062,18 +2062,18 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybilldatamtn()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:yellow;' >
-			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamtn()"  src="https://wish.designsandsystems.com.ng/Logo/Mtn.png"  ><input type='hidden' id='BILL108' value="BIL108" ><input type='hidden' id='BILL108m' value="mtn" >
+			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamtn()"  src="Logo/Mtn.png"  ><input type='hidden' id='BILL108' value="BIL108" ><input type='hidden' id='BILL108m' value="mtn" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybilldataglo()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:green;' >
-			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybilldataglo()"  src="https://wish.designsandsystems.com.ng/Logo/Glo.jfif"  ><input type='hidden' id='BILL109' value="BIL109" ><input type='hidden' id='BILL109g' value="glo" >
+			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybilldataglo()"  src="Logo/Glo.jfif"  ><input type='hidden' id='BILL109' value="BIL109" ><input type='hidden' id='BILL109g' value="glo" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybilldataairtel()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:red;' >
-			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybilldataairtel()"  src="https://wish.designsandsystems.com.ng/Logo/Airtel.png"  ><input type='hidden' id='BILL110' value="BIL110" ><input type='hidden' id='BILL110a' value="airtel" >
+			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybilldataairtel()"  src="Logo/Airtel.png"  ><input type='hidden' id='BILL110' value="BIL110" ><input type='hidden' id='BILL110a' value="airtel" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybilldatamobile()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:green;' >
-			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamobile()"  src="https://wish.designsandsystems.com.ng/Logo/9mobile.png"  ><input type='hidden' id='BILL111' value="BIL111" ><input type='hidden' id='BILL111mo' value="9 mobile" >
+			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamobile()"  src="Logo/9mobile.png"  ><input type='hidden' id='BILL111' value="BIL111" ><input type='hidden' id='BILL111mo' value="9 mobile" >
 			   </div></li></div>
 			
 			 </div>
@@ -2098,35 +2098,35 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybillpower1()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    abuja disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower1()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcaedc.png"  ><input type='hidden' id='BIL204abj' value="abuja disco" >
+			    abuja disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower1()"  src="Logo/Electrcaedc.png"  ><input type='hidden' id='BIL204abj' value="abuja disco" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillpower2()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    ikdc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower2()"  src="https://wish.designsandsystems.com.ng/Logo/Electrciek.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ik' value="ikdc" >
+			    ikdc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower2()"  src="Logo/Electrciek.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ik' value="ikdc" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillpower3()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    ibadan disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower3()"  src="https://wish.designsandsystems.com.ng/Logo/Electrciban.png"  ><input type='hidden' id='BIL112' value="BIL112" ><input type='hidden' id='BIL112ib' value="ibadan disco" >
+			    ibadan disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower3()"  src="Logo/Electrciban.png"  ><input type='hidden' id='BIL112' value="BIL112" ><input type='hidden' id='BIL112ib' value="ibadan disco" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillpower4()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    enugu disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower4()"  src="https://wish.designsandsystems.com.ng/Logo/Electrceec.png"  ><input type='hidden' id='BIL115' value="BIL115" ><input type='hidden' id='BIL115en' value="enugu disco" >
+			    enugu disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower4()"  src="Logo/Electrceec.png"  ><input type='hidden' id='BIL115' value="BIL115" ><input type='hidden' id='BIL115en' value="enugu disco" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillpower5()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    phc disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower5()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcph.png"  ><input type='hidden' id='BIL114' value="BIL114" ><input type='hidden' id='BIL114ph' value="phc disco" >
+			    phc disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower5()"  src="Logo/Electrcph.png"  ><input type='hidden' id='BIL114' value="BIL114" ><input type='hidden' id='BIL114ph' value="phc disco" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillpower6()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    benin disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower6()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcben.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ben' value="benin disco" >
+			    benin disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower6()"  src="Logo/Electrcben.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ben' value="benin disco" >
 			   </div></li></div>
 	
 		   
 	<div class='grid-photo' onclick = "quadpaybillpower8()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    kaduna<img style='width:90%;height:75px;'  onclick = "quadpaybillpower8()"  src="https://wish.designsandsystems.com.ng/Logo/Electrckd.png"  ><input type='hidden' id='BIL119' value="BIL119" ><input type='hidden' id='BIL119kd' value="kaduna" >
+			    kaduna<img style='width:90%;height:75px;'  onclick = "quadpaybillpower8()"  src="Logo/Electrckd.png"  ><input type='hidden' id='BIL119' value="BIL119" ><input type='hidden' id='BIL119kd' value="kaduna" >
 			   </div></li></div>		   
 	<div class='grid-photo' onclick = "quadpaybillpower9()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    kano<img style='width:90%;height:75px;'  onclick = "quadpaybillpower9()"  src="https://wish.designsandsystems.com.ng/Logo/Electrciba.png"  ><input type='hidden' id='BIL120' value="BIL120" ><input type='hidden' id='BIL120kn' value="kano" >
+			    kano<img style='width:90%;height:75px;'  onclick = "quadpaybillpower9()"  src="Logo/Electrciba.png"  ><input type='hidden' id='BIL120' value="BIL120" ><input type='hidden' id='BIL120kn' value="kano" >
 			   </div></li></div>		   
 		<div class='grid-photo' onclick = "quadpaybillpower10()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    ekedc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower10()"  src="https://wish.designsandsystems.com.ng/Logo/Electrcekee.png"  ><input type='hidden' id='BIL116' value="BIL116" ><input type='hidden' id='BIL116ek' value="ekedc" >
+			    ekedc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower10()"  src="Logo/Electrcekee.png"  ><input type='hidden' id='BIL116' value="BIL116" ><input type='hidden' id='BIL116ek' value="ekedc" >
 			   </div></li></div>	
 			 </div>
 			    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -2150,18 +2150,18 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybillcableg()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    gotv<img style='width:90%;height:75px;'  onclick = "quadpaybillcableg()"  src="https://wish.designsandsystems.com.ng/Logo/Gotv.png"  ><input type='hidden' id='BIL122' value="BIL122" ><input type='hidden' id='BIL122g' value="gotv" >
+			    gotv<img style='width:90%;height:75px;'  onclick = "quadpaybillcableg()"  src="Logo/Gotv.png"  ><input type='hidden' id='BIL122' value="BIL122" ><input type='hidden' id='BIL122g' value="gotv" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillcabled()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    dstv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablegd()"  src="https://wish.designsandsystems.com.ng/Logo/Dstv.jfif"  ><input type='hidden' id='BIL121' value="BIL121" ><input type='hidden' id='BIL121d' value="dstv" >
+			    dstv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablegd()"  src="Logo/Dstv.jfif"  ><input type='hidden' id='BIL121' value="BIL121" ><input type='hidden' id='BIL121d' value="dstv" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillcables()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    startimes<img style='width:90%;height:75px;'  onclick = "quadpaybillcables()"  src="https://wish.designsandsystems.com.ng/Logo/Startimes.jfif"  ><input type='hidden' id='BIL123' value="BIL123" ><input type='hidden' id='BIL123s' value="startimes" >
+			    startimes<img style='width:90%;height:75px;'  onclick = "quadpaybillcables()"  src="Logo/Startimes.jfif"  ><input type='hidden' id='BIL123' value="BIL123" ><input type='hidden' id='BIL123s' value="startimes" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillcablef()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    freetv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablef()"  src="https://wish.designsandsystems.com.ng/Logo/Freetv.png"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124f' value="freetv" >
+			    freetv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablef()"  src="Logo/Freetv.png"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124f' value="freetv" >
 			   </div></li></div>
 			
 			 </div>
@@ -2186,18 +2186,18 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybillinternets()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    smile<img style='width:90%;height:75px;'  onclick = "quadpaybillinternets()"  src="https://wish.designsandsystems.com.ng/Logo/Smile.jfif"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124s' value="smile" >
+			    smile<img style='width:90%;height:75px;'  onclick = "quadpaybillinternets()"  src="Logo/Smile.jfif"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124s' value="smile" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillinternetm()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    mtnhynet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetm()"  src="https://wish.designsandsystems.com.ng/Logo/Mtn.png"  ><input type='hidden' id='BIL136' value="BIL136" ><input type='hidden' id='BIL136m' value="mtn hynet" >
+			    mtnhynet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetm()"  src="Logo/Mtn.png"  ><input type='hidden' id='BIL136' value="BIL136" ><input type='hidden' id='BIL136m' value="mtn hynet" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillinternetsp()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    spectranet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetsp()"  src="https://wish.designsandsystems.com.ng/Logo/Spectranet.jfif"  ><input type='hidden' id='BIL123' value="" ><input type='hidden' id='BIL123sp' value="spectranet" >
+			    spectranet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetsp()"  src="Logo/Spectranet.jfif"  ><input type='hidden' id='BIL123' value="" ><input type='hidden' id='BIL123sp' value="spectranet" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillinterneta()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    airtel dealer<img style='width:90%;height:75px;'  onclick = "quadpaybillinterneta()"  src="https://wish.designsandsystems.com.ng/Logo/Airtel.png"  ><input type='hidden' id='BIL128a' value="airtel dealer" >
+			    airtel dealer<img style='width:90%;height:75px;'  onclick = "quadpaybillinterneta()"  src="Logo/Airtel.png"  ><input type='hidden' id='BIL128a' value="airtel dealer" >
 			   </div></li></div>
 			
 			 </div>
@@ -2228,7 +2228,7 @@ function success(position) {
 		<div>
 	    
 		<div id='overlay' >
-  <img src='https://wish.designsandsystems.com.ng/loading.gif' id='img' >
+  <img src='loading.gif' id='img' >
 </div>  
 		
 	</div>
@@ -2408,14 +2408,14 @@ function success(position) {
 </div> </div>  
 
 <div id="overlay" >
-  <img src="https://wish.designsandsystems.com.ng/loading.gif" id="img" >
+  <img src="loading.gif" id="img" >
 </div>	
 		
-<div id ='gall' class='bottom-left' data-toggle='modal'  data-target='#datalogin' onclick='fetchpassword()' data-id=''><img style='width:50px;height:50px;' src="https://wish.designsandsystems.com.ng/Left icon.jpg" id="img11" >
+<div id ='gall' class='bottom-left' data-toggle='modal'  data-target='#datalogin' onclick='fetchpassword()' data-id=''><img style='width:50px;height:50px;' src="Left icon.jpg" id="img11" >
 </div>
 <div class='bottom-left1'></div>
-<div id ='starcenter' class='bottom-left2' data-toggle='modal'  data-target='#starplace' onclick = 'fetchstarplace()'  ><img style='width:75px;height:75px;'  src="https://wish.designsandsystems.com.ng/Center.jpg" id="img5" ></div>
-<div id ='gally3' class='bottom-right' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  style=';'><img style='width:50px;height:50px;'  src="https://wish.designsandsystems.com.ng/Right icon.jpg" id="img2" >
+<div id ='starcenter' class='bottom-left2' data-toggle='modal'  data-target='#starplace' onclick = 'fetchstarplace()'  ><img style='width:75px;height:75px;'  src="Center.jpg" id="img5" ></div>
+<div id ='gally3' class='bottom-right' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  style=';'><img style='width:50px;height:50px;'  src="Right icon.jpg" id="img2" >
 </div>
 <div id ='quadpaybutton' data-toggle='modal'   data-target='#quadpaycenter' class='top-right'   style=';'>quadpay</div>
 </div>
