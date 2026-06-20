@@ -347,7 +347,7 @@ border: 1px solid #555;
     var naira = $("#ide").val(id); 
      var myemail = $("#email").val();
      $.ajax({
-      url : "fetchvalue.php",
+      url : "http://designsandsystems.com.ng/wish/fetchvalue.php",
       type : "POST",
       cache: false,
       data : {id:id,myemail:myemail},
@@ -389,7 +389,7 @@ border: 1px solid #555;
          var devicee = devr;
         var code = decodeURI(getUrlVars()["code"]);
     $.ajax({
-      url  : "fetch_me.php",
+      url  : "http://designsandsystems.com.ng/wish/fetch_me.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail,device:devicee,code:code},
@@ -400,7 +400,7 @@ border: 1px solid #555;
       success:function(data){
           if(data==="error" ){alert('Unreconnized Device found');$("#confirmdevice_error").modal();
            $.ajax({
-      url  : "fetch_melog.php",
+      url  : "http://designsandsystems.com.ng/wish/fetch_melog.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail,device:devicee,code:code},
@@ -426,7 +426,7 @@ border: 1px solid #555;
         var ip = $("#text2").val();var text22 = $("#text22").val();
         var code = decodeURI(getUrlVars()["code"]);//alert(text22);
     $.ajax({
-      url  : "fetchinfo.php",
+      url  : "http://designsandsystems.com.ng/wish/fetchinfo.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail,device:deviceD,code:code,IP:text22},
@@ -467,7 +467,7 @@ border: 1px solid #555;
       //$("#dataserv").html("Wrong Password");;
   }else{
     $.ajax({
-      url : "UpdateDevice.php",
+      url : "http://designsandsystems.com.ng/wish/UpdateDevice.php",
       type : "POST",
       cache: true,
       data : {maildevice:updatedevicemail,deviceupd:deviceupdate2,INcode:mailtokenIN},
@@ -540,7 +540,7 @@ function success(position) {
   function fetchloadip(){
          var check_in = decodeURI(getUrlVars()["nemail"]); 
     $.ajax({
-      url  : "Ip.php",
+      url  : "http://designsandsystems.com.ng/wish/Ip.php",
       type : "POST",
       cache: false,
       data : {checkIN:check_in},
@@ -556,7 +556,7 @@ function success(position) {
   function fetchloadserver(){
          var check_in = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "updatefromFLUTTERserver.php",
+      url  : "http://designsandsystems.com.ng/wish/updatefromFLUTTERserver.php",
       type : "POST",
       cache: false,
       data : {checkIN:check_in},
@@ -571,7 +571,7 @@ function success(position) {
   function fetchTotal(){
          var myemail = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "fetchwishvileTotal.php",
+      url  : "http://designsandsystems.com.ng/wish/fetchwishvileTotal.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail},
@@ -584,7 +584,7 @@ function success(position) {
   function fetchquadpaybalance(){
          var myemail = decodeURI(getUrlVars()["nemail"]);
     $.ajax({
-      url  : "quadpayfetch.php",
+      url  : "http://designsandsystems.com.ng/wish/quadpayfetch.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail},
@@ -609,7 +609,7 @@ function success(position) {
    
     //confirm(duration+t2)
     $.ajax({
-      url : "planb.php",
+      url : "http://designsandsystems.com.ng/wish/planb.php",
       type : "POST",
       cache: false,
       data : {t1:t1,t2:t2,duration:duration},
@@ -632,7 +632,7 @@ function success(position) {
    // document.getElementById("dollarnow").innerHTML ="the rate of: N"+dollar11+"\nthe new Amount: "+newdollarValue;
         if (confirm("PLS NOTE:\n 1. To convert to naira it's effected after 24Hrs\n 2. "+say+naira_amout+say2)){
     $.ajax({
-      url : "dollarconverter.php",
+      url : "http://designsandsystems.com.ng/wish/dollarconverter.php",
       type : "POST",
       cache: false,
       data : {dollar:dollar11,naira_amout:naira_amout,id:id,Cmail:mmail},
@@ -655,7 +655,7 @@ function success(position) {
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
     $.ajax({
-      url : "fetchpassword.php",
+      url : "http://designsandsystems.com.ng/wish/fetchpassword.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1},
@@ -677,7 +677,7 @@ function success(position) {
     checkpassword = $("#checkpassword").val();
     if (password===checkpassword){
     $.ajax({
-      url : "updatedata.php",
+      url : "http://designsandsystems.com.ng/wish/updatedata.php",
       type : "POST",
       cache: false,
       data : {mail:mail,device2:device2,password:password},
@@ -705,7 +705,7 @@ function success(position) {
     var id = $(this).attr("data-id");
      var myemail = $("#email").val();
      $.ajax({
-      url : "detail.php",
+      url : "http://designsandsystems.com.ng/wish/detail.php",
       type : "POST",
       cache: false,
       data : {id:id,myemail:myemail},
@@ -936,7 +936,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "submit.php",
+                    url: "http://designsandsystems.com.ng/wish/submit.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -1004,7 +1004,7 @@ function success(position) {
      //alert(authorization);
      
      $.ajax({
-      url : "verifypay.php",
+      url : "http://designsandsystems.com.ng/wish/verifypay.php",
       type : "POST",
       cache: false,
       data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
@@ -1060,7 +1060,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "cardless_charge.php",
+                    url: "http://designsandsystems.com.ng/wish/cardless_charge.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -1125,7 +1125,7 @@ function success(position) {
 	     
 	     $.ajax({
                     type: "POST",
-                    url: "submit.php",
+                    url: "http://designsandsystems.com.ng/wish/submit.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -1189,7 +1189,7 @@ function success(position) {
      //alert(authorization);
      
      $.ajax({
-      url : "verifypay.php",
+      url : "http://designsandsystems.com.ng/wish/verifypay.php",
       type : "POST",
       cache: false,
       data : {pid_in:pid_in,uploadamount:uploadamount,email:email},
@@ -1222,7 +1222,7 @@ function success(position) {
     var mmail = decodeURI(getUrlVars()["nemail"]);
     var device1 = $("#device").val();
     $.ajax({
-      url : "fetchpassword.php",
+      url : "http://designsandsystems.com.ng/wish/fetchpassword.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1},
@@ -1246,7 +1246,7 @@ function success(position) {
     var myip  = $("#text2").val();
     //alert(myLng1 );alert(myLat1);
     $.ajax({
-      url : "fetchstarplace.php",
+      url : "http://designsandsystems.com.ng/wish/fetchstarplace.php",
       type : "POST",
       cache: false,
       data : {mamail:mamail,deviced:deviced,myLng1:myLng1,myLat1:myLat1,myip:myip},
@@ -1264,7 +1264,7 @@ function success(position) {
     var SUM_device = $("#device").val();
     var SUM_id = $("#device").val();
     $.ajax({
-      url : "summary.php",
+      url : "http://designsandsystems.com.ng/wish/summary.php",
       type : "POST",
       cache: false,
       data : {SUMmail:SUM_mail,SUMdevice:SUM_device,SUMid:SUM_id},
@@ -1461,7 +1461,7 @@ function success(position) {
     var ipno  = $("#text2").val();
     var billerco  = $("#billnamecode").val();
     $.ajax({
-      url : "quadpay.php",
+      url : "http://designsandsystems.com.ng/wish/quadpay.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1,billtype:billtype,billpass:billpass,billGroup:billgrp,mLg:mLg,mLt:mLt,ipno:ipno,billerco:billerco},
@@ -1486,7 +1486,7 @@ function success(position) {
     var ipm  = $("#text2").val();
     var billpass =  $("#checkpassword").val();
     $.ajax({
-      url : "quadpaytranfer.php",
+      url : "http://designsandsystems.com.ng/wish/quadpaytranfer.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1,billpass:billpass,myLnong:myLnong,myLatit:myLatit,ipm:ipm},
@@ -1510,7 +1510,7 @@ function success(position) {
     var ipnow  = $("#text2").val();
     var billpass =  $("#checkpassword").val();
     $.ajax({
-      url : "quadpayintranfer.php",
+      url : "http://designsandsystems.com.ng/wish/quadpayintranfer.php",
       type : "POST",
       cache: false,
       data : {mmail:mmail,device1:device1,billpass:billpass,Lnong:Lnong,Latit:Latit,ipnow:ipnow},
@@ -1538,7 +1538,7 @@ function success(position) {
     
     if (password===checkpassword){
     $.ajax({
-      url : "quadpaydata.php",
+      url : "http://designsandsystems.com.ng/wish/quadpaydata.php",
       type : "POST",
       cache: false,
       data : {mmail:mailm,device1:device2,billpass:password,netwok:netwk},
