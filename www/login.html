@@ -127,7 +127,7 @@ function submit(){
     $.ajax({
 
         type: "POST",crossDomain: true, cache: false,
-        url: "https://wish.designsandsystems.com.ng/auth.php",
+        url: "auth.php",
         data: dataString,
         beforeSend: function() {
                         $("#registerButton1").val('Creating New Account...');
@@ -165,7 +165,7 @@ function recoversubmit(){
     $.ajax({
 
         type: "POST",crossDomain: true, cache: false,
-        url: "https://wish.designsandsystems.com.ng/Recover.php",
+        url: "Recover.php",
         data : {reemail:reemail},
         beforeSend: function() {
                         $("recoverButton1").val('recover Account...');
