@@ -75,7 +75,7 @@
     $.ajax({
 
         type: "POST",crossDomain: true, cache: false,
-        url: "http://designsandsystems.com.ng/wish/auth.php",
+        url: "https://designsandsystems.com.ng/wish/auth.php",
         data: dataString,
         success: function(data){
             if(data == "success")
@@ -127,7 +127,7 @@ function submit(){
     $.ajax({
 
         type: "POST",crossDomain: true, cache: false,
-        url: "http://designsandsystems.com.ng/wish/auth.php",
+        url: "https://designsandsystems.com.ng/wish/auth.php",
         data: dataString,
         beforeSend: function() {
                         $("#registerButton1").val('Creating New Account...');
@@ -165,7 +165,7 @@ function recoversubmit(){
     $.ajax({
 
         type: "POST",crossDomain: true, cache: false,
-        url: "Recover.php",
+        url: "https://designsandsystems.com.ng/wish/Recover.php",
         data : {reemail:reemail},
         beforeSend: function() {
                         $("recoverButton1").val('recover Account...');
@@ -258,7 +258,7 @@ function login(){
     var loginString ="nemail="+nemail+"&lat="+lat+"&log="+log+ "&device1="+device1+"&code3="+code3+"&code2="+code2+"&password="+password+"&login=";
     $.ajax({
         type: "POST",crossDomain: true, cache: false,
-        url: "http://designsandsystems.com.ng/wish/test.php",
+        url: "https://designsandsystems.com.ng/wish/test.php",
         data: loginString,
         beforeSend: function() {
                         
