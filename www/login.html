@@ -262,7 +262,7 @@ function login(){
         data: loginString,
         beforeSend: function() {
                         
-                        $("#loginButton").val("Authenticating...");alert('Please enter ');
+                        $("#loginButton").val("Authenticating...");
                     },
         success: function(data){
             { var nemailw=data; 
@@ -272,7 +272,7 @@ function login(){
                 
                
                window.location.href='index.html?nemail='+nemailw+'';
-        alert (nemailw); window.location.replace('index.html?nemail='+nemailw+'&lat='+lat +'')
+        //alert (nemailw); window.location.replace('index.html?nemail='+nemailw+'&lat='+lat +'')
                 //window.location.href = 'index.html?nemail='+nemailw;
                 $("#loginButton").val(LOGIN);
                 setInterval(load(), 5000);
