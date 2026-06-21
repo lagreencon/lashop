@@ -294,7 +294,35 @@ border: 1px solid #555;
         <p  style="font-size:8px; font-family:Times New Roman, Times, serif; text-align:right; color:red;font-style: italic;" id="disz">pls update your info to validate your acc.</p>
     	</div ><a  >
 	  <input type='button' class='btn-success' value="ADD FUND"  data-toggle='modal'  data-target='#addfund'> </a>
-	  
+	  <div id="quadpayin">
+			<div class='grid-photo' style='background-color:white;color:black;opacity:2;' data-toggle='modal'  data-target='#quadpaycenter1     id='quadpayairtime'><li>
+			    Airtime
+			    </li></div>
+			    
+			<div class='grid-photo' style='background-color:brown;color:blue;opacity:2;'     id='quadpayairtimedata'><li>
+			    Data
+			    <input type='button'   class='btn-success' value="Data" data-toggle='modal'  data-target='#quadpaycenter2'></li></div>
+			    
+		<div class='grid-photo' style='background-color:lilac;color:black;opacity:2;'     id='quadpaylight'><li>
+			    Power
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter3' class='btn-success' value="Power" ></li></div>
+		<div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='quadpaycable'><li>
+			    Cable
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter4' class='btn-success' value="Cable" ></li></div>
+			<div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='Internet'><li>
+			    Internet
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter5' class='btn-success' value="Internet" ></li></div>
+			 <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='Others'><li>
+			    Others
+			    <input type='button' onclick = "quadpaybillothers()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Others" ></li></div>
+			 <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='transfer'><li>
+			    BANK transfer
+			    <input type='button' onclick = "quadpaytransfer()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="transfer" ></li></div>
+			    <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='WalletTrsfer'><li>
+			    Wallet Trsfer
+			    <input type='button' onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="In APP" ></li></div>
+			   <br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br><br>
+			</div>
 	  <input type="hidden" style='position: relative;background-color:lilac;width:100px;height:15px;opacity:2;color:black;'  class="button button-block" value="600" id="dollar" name ="dollar" readonly />
 	  <div id="dollarView" name ="dollarView"></div>
 	  <p id="quadpaybalance" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
