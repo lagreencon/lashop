@@ -17,11 +17,11 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-  <script src="popper.js"></script>
+  <script src="https://designsandsystems.com.ng/wish/popper.js"></script>
   <script src="bootstrap.min.js"></script>
   <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-    <link rel="stylesheet" href="style.css" />
-	<link rel="stylesheet" type="text/css" href="style1.css" />
+    <link rel="stylesheet" href="https://designsandsystems.com.ng/wish/style.css" />
+	<link rel="stylesheet" type="text/css" href="https://designsandsystems.com.ng/wish/style1.css" />
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
 	<script src="https://checkout.flutterwave.com/v3.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.js" integrity="sha512-vISbGOeXVsyi+HddyUt0T5drmi9JB1SFSrOeQQYQVGQtraka7UFPUrjOCV+nndyVMG5RJpH8J4B1XuvCseajDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -60,6 +60,23 @@
 }
 
 
+	.grid-photo1 {margin:10px -7px;}
+
+.grid-photo1 li {position: relative; background: white; display:block; float:left; width: 5%; height: 10%; font-size: 10px; padding-bottom: 5%;opacity:0.9; }
+.grid-photo .grid-photo-box {position: absolute;left: 3px;right: 3px;top: 3px;bottom: 3px; background-color: rgba(128,128,128,0.2);}
+.grid-photo img {width:100%;height:90%}
+@media only screen and (max-width : 1024px;) {
+    .grid-photo1 li {width: 30%; padding-bottom: 5%;}
+}
+@media only screen and (max-width : 768px) {
+    .grid-photo1 li {width: 35%; padding-bottom: 5%; }
+}
+@media only screen and (max-width : 480px) {
+    .grid-photo1 li {width: 25%; padding-bottom: 5%;}
+}
+@media only screen and (max-width : 320px) {
+    .grid-photo1 li {width: 30%; padding-bottom: 5%;}
+}
 	
 
 
@@ -289,47 +306,51 @@ border: 1px solid #555;
   border: 1px solid #555;
   border-color:pink;
   border-radius: 5%;">
-        <div href="#main"><span></span><span></span><p style="font-size:13px; font-family:Arial, Helvetica, sans-serif; text-align:left; color:green;" id="name"></p>
+          <div href="#main"><span></span><span></span><p style="font-size:13px; font-family:Arial, Helvetica, sans-serif; text-align:left; color:green;" id="name"></p>
         <div href="#main"><span></span><span></span><p style="font-size:15px; font-family:Arial, Helvetica, sans-serif; text-align:right; color:blue;" id="RegN0"></p>
         <p  style="font-size:8px; font-family:Times New Roman, Times, serif; text-align:right; color:red;font-style: italic;" id="disz">pls update your info to validate your acc.</p>
-    	</div ><a  >
+    	</div >
+    	<div id="dollarView" name ="dollarView"></div>
+	  <div id="quadpaybalance" style="font-size:30px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </div> 
+    	
+    	<a  >
 	  <input type='button' class='btn-success' value="ADD FUND"  data-toggle='modal'  data-target='#addfund'> </a>
+	  
 	  <div id="quadpayin">
-			<div class='grid-photo' style='background-color:white;color:black;opacity:2;' data-toggle='modal'  data-target='#quadpaycenter1     id='quadpayairtime'><li>
-			    Airtime
-			    </li></div>
+			<div class='grid-photo1' style='background-color:white;color:black;opacity:2;'      id='quadpayairtime'><li>
+			   
+			    <input type='button'  value="Airtime"  data-toggle='modal'  data-target='#quadpaycenter1' ></li></div>
 			    
-			<div class='grid-photo' style='background-color:brown;color:blue;opacity:2;'     id='quadpayairtimedata'><li>
-			    Data
-			    <input type='button'   class='btn-success' value="Data" data-toggle='modal'  data-target='#quadpaycenter2'></li></div>
+			<div class='grid-photo1' style='background-color:brown;color:black;opacity:2;'     id='quadpayairtimedata'><li>
 			    
-		<div class='grid-photo' style='background-color:lilac;color:black;opacity:2;'     id='quadpaylight'><li>
-			    Power
-			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter3' class='btn-success' value="Power" ></li></div>
-		<div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='quadpaycable'><li>
-			    Cable
-			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter4' class='btn-success' value="Cable" ></li></div>
-			<div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='Internet'><li>
-			    Internet
-			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter5' class='btn-success' value="Internet" ></li></div>
-			 <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='Others'><li>
-			    Others
-			    <input type='button' onclick = "quadpaybillothers()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="Others" ></li></div>
-			 <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='transfer'><li>
-			    BANK transfer
-			    <input type='button' onclick = "quadpaytransfer()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="transfer" ></li></div>
-			    <div class='grid-photo' style='background-color:grey;color:black;opacity:2;'     id='WalletTrsfer'><li>
-			    Wallet Trsfer
-			    <input type='button' onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata' class='btn-success' value="In APP" ></li></div>
-			   <br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br><br>
+			    <input type='button'    value="Data" data-toggle='modal'  data-target='#quadpaycenter2'></li></div>
+			    
+		<div class='grid-photo1' style='background-color:lilac;color:black;opacity:2;'     id='quadpaylight'><li>
+			    
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter3'  value="Power" ></li></div>
+		<div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='quadpaycable'><li>
+			    
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter4'  value="Cable" ></li></div>
+			<div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Internet'><li>
+			    
+			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter5'  value="Internet" ></li></div>
+			 <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Cheapdata'><li>
+			    
+			    <input type='button' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  value="Data+" ></li></div>
+			 <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Transfer'><li>
+			    
+			    <input type='button' onclick = "quadpaytransfer()" data-toggle='modal'  data-target='#quadpaydata'  value="Bank-T" ></li></div>
+			    <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='WalletTrsfer'><li>
+			    
+			    <input type='button' onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata'  value="In APP" ></li></div>
+			   <br>
 			</div>
-	  <input type="hidden" style='position: relative;background-color:lilac;width:100px;height:15px;opacity:2;color:black;'  class="button button-block" value="600" id="dollar" name ="dollar" readonly />
-	  <div id="dollarView" name ="dollarView"></div>
-	  <p id="quadpaybalance" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
+	  
+	 
+	  
 	  
 	  <p id="grandtotal" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
 </div>
-      
 	    <script>
 	  
 	  $(document).ready(function() {
@@ -2439,11 +2460,11 @@ function success(position) {
   <img src="loading.gif" id="img" >
 </div>	
 		
-<div id ='gall' class='bottom-left' data-toggle='modal'  data-target='#datalogin' onclick='fetchpassword()' data-id=''><img style='width:50px;height:50px;' src="Left icon.jpg" id="img11" >
+<div id ='gall' class='bottom-left' data-toggle='modal'  data-target='#datalogin' onclick='fetchpassword()' data-id=''><img style='width:50px;height:50px;' src="https://designsandsystems.com.ng/wish/Left icon.jpg" id="img11" >
 </div>
 <div class='bottom-left1'></div>
-<div id ='starcenter' class='bottom-left2' data-toggle='modal'  data-target='#starplace' onclick = 'fetchstarplace()'  ><img style='width:75px;height:75px;'  src="Center.jpg" id="img5" ></div>
-<div id ='gally3' class='bottom-right' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  style=';'><img style='width:50px;height:50px;'  src="Right icon.jpg" id="img2" >
+<div id ='starcenter' class='bottom-left2' data-toggle='modal'  data-target='#starplace' onclick = 'fetchstarplace()'  ><img style='width:75px;height:75px;'  src="https://designsandsystems.com.ng/wish/Center.jpg" id="img5" ></div>
+<div id ='gally3' class='bottom-right' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  style=';'><img style='width:50px;height:50px;'  src="https://designsandsystems.com.ng/wish/Right icon.jpg" id="img2" >
 </div>
 <div id ='quadpaybutton' data-toggle='modal'   data-target='#quadpaycenter' class='top-right'   style=';'>quadpay</div>
 </div>
