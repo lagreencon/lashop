@@ -489,18 +489,18 @@ border: 1px solid #555;
         var CSdata = data;
       const CSdata_Array = CSdata.split(",");
      var TRUE_email =CSdata_Array[2]; 
-     var TRUE_surname =CSdata_Array[0]; var TRUE_name =CSdata_Array[1];var TRUE_Reg =CSdata_Array[3];
+     var TRUE_surname =CSdata_Array[0]; var TRUE_name =CSdata_Array[1];var TRUE_Reg =CSdata_Array[3]; var TRUE_RegBank =CSdata_Array[4];
          let Acc_no = TRUE_Reg.length;
          document.getElementById("name").innerHTML ="welcome:  "+TRUE_surname+" "+TRUE_name +"!";
          
      if (Acc_no >= 10){//document.getElementById('disz').style.display ='none';
-         document.getElementById('disz').innerHTML ='wema bank...';
+         document.getElementById('disz').innerHTML =TRUE_RegBank;
          document.getElementById('disz').style.fontSize ='12';
          document.getElementById("RegN0").innerHTML ="acc_no :"+TRUE_Reg+"  " ;
      }
      else{document.getElementById('disz').style.display ='block';
      document.getElementById("RegN0").innerHTML ="acc_id :"+TRUE_Reg+"  " ;}
-          }
+           }
         
       }
     });}
