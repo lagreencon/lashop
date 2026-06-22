@@ -21,7 +21,7 @@
   <script src="bootstrap.min.js"></script>
   <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
     <link rel="stylesheet" href="https://designsandsystems.com.ng/wish/style.css" />
-	<link rel="stylesheet" type="text/css" href="https://designsandsystems.com.ng/wish/style1.css" />
+	<link rel="stylesheet" type="text/css" href="style1.css" />
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
 	<script src="https://checkout.flutterwave.com/v3.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.js" integrity="sha512-vISbGOeXVsyi+HddyUt0T5drmi9JB1SFSrOeQQYQVGQtraka7UFPUrjOCV+nndyVMG5RJpH8J4B1XuvCseajDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -306,7 +306,7 @@ border: 1px solid #555;
   border: 1px solid #555;
   border-color:pink;
   border-radius: 5%;">
-          <div href="#main"><span></span><span></span><p style="font-size:13px; font-family:Arial, Helvetica, sans-serif; text-align:left; color:green;" id="name"></p>
+         <div href="#main"><span></span><span></span><p style="font-size:15px; font-family:Arial, Helvetica, sans-serif; text-align:left; color:green;" id="name"></p>
         <div href="#main"><span></span><span></span><p style="font-size:15px; font-family:Arial, Helvetica, sans-serif; text-align:right; color:blue;" id="RegN0"></p>
         <p  style="font-size:8px; font-family:Times New Roman, Times, serif; text-align:right; color:red;font-style: italic;" id="disz">pls update your info to validate your acc.</p>
     	</div >
@@ -316,40 +316,38 @@ border: 1px solid #555;
     	<a  >
 	  <input type='button' class='btn-success' value="ADD FUND"  data-toggle='modal'  data-target='#addfund'> </a>
 	  
-	  <div id="quadpayin">
+	  <div id="quadpayin"  class='quadpaybox1' >
 			<div class='grid-photo1' style='background-color:white;color:black;opacity:2;'      id='quadpayairtime'><li>
 			   
-			    <input type='button'  value="Airtime"  data-toggle='modal'  data-target='#quadpaycenter1' ></li></div>
+			    <button   data-toggle='modal'  data-target='#quadpaycenter2'>Airtime</button></li></div>
 			    
 			<div class='grid-photo1' style='background-color:brown;color:black;opacity:2;'     id='quadpayairtimedata'><li>
 			    
-			    <input type='button'    value="Data" data-toggle='modal'  data-target='#quadpaycenter2'></li></div>
+			    <button    data-toggle='modal'  data-target='#quadpaycenter2'>Data</button></li></div>
 			    
 		<div class='grid-photo1' style='background-color:lilac;color:black;opacity:2;'     id='quadpaylight'><li>
 			    
-			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter3'  value="Power" ></li></div>
+			    <button   data-toggle='modal'  data-target='#quadpaycenter3'>Power</button></li></div>
 		<div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='quadpaycable'><li>
 			    
-			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter4'  value="Cable" ></li></div>
+			    <button   data-toggle='modal'  data-target='#quadpaycenter4'>Cable</button></li></div>
 			<div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Internet'><li>
 			    
-			    <input type='button'  data-toggle='modal'  data-target='#quadpaycenter5'  value="Internet" ></li></div>
+			    <button   data-toggle='modal'  data-target='#quadpaycenter5'>Internet</button></li></div>
 			 <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Cheapdata'><li>
 			    
-			    <input type='button' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  value="Data+" ></li></div>
+			    <button  data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'>Data+</button></li></div>
 			 <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Transfer'><li>
 			    
-			    <input type='button' onclick = "quadpaytransfer()" data-toggle='modal'  data-target='#quadpaydata'  value="Bank-T" ></li></div>
+			    <button  onclick = "quadpaytransfer()" data-toggle='modal'  data-target='#quadpaydata'>Bank-T</button></li></div>
 			    <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='WalletTrsfer'><li>
 			    
-			    <input type='button' onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata'  value="In APP" ></li></div>
+			    <button onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata'>In APP</button></li></div>
 			   <br>
 			</div>
 	  
-	 
-	  
-	  
-	  <p id="grandtotal" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
+	 <p id="grandtotal" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p>
+	  <div id="savingsdisplay" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </div>
 </div>
 	    <script>
 	  
