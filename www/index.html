@@ -10,18 +10,17 @@
 
 	<link rel="stylesheet" href="css/app.css">
 	<link rel="icon" type="image/x-icon" href="logo1.png">
-    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    
     <script src="js/app.js"></script>
 	<script src="jquery.min.js"></script>
     <script type="text/javascript" src="geturi.js"></script>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-  <script src="https://designsandsystems.com.ng/wish/popper.js"></script>
+  <script src="popper.js"></script>
   <script src="bootstrap.min.js"></script>
   <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-    <link rel="stylesheet" href="https://designsandsystems.com.ng/wish/style.css" />
-	<link rel="stylesheet" type="text/css" href="style1.css" />
+   
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
 	<script src="https://checkout.flutterwave.com/v3.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.js" integrity="sha512-vISbGOeXVsyi+HddyUt0T5drmi9JB1SFSrOeQQYQVGQtraka7UFPUrjOCV+nndyVMG5RJpH8J4B1XuvCseajDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -40,7 +39,137 @@
 				
 		</SCRIPT>
 		
+<title>Wishville â€“ Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal-dark: #0D3D38; --teal-mid: #115E56; --teal-bright: #1A8A7C;
+    --teal-glow: #23C2AE; --accent: #2EE8C8; --gold: #F5C842;
+    --bg: #F0F5F4; --surface: #FFFFFF; --text-main: #0A2926; --text-sub: #4A6E6A;
+    --success: #12B76A; --radius-card: 20px;
+    --shadow-card: 0 4px 24px rgba(13,61,56,0.10); --transition: 0.22s cubic-bezier(.4,0,.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+  .shell { width: 100%; max-width: 480px; min-height: 100vh; background: var(--surface); display: flex; flex-direction: column; position: relative; overflow-x: hidden; }
+  @media (min-width: 768px) {
+    body { background: linear-gradient(135deg, #0D3D38 0%, #1A8A7C 100%); padding: 40px 0; }
+    .shell { border-radius: 36px; box-shadow: 0 32px 80px rgba(10,41,38,0.45); min-height: auto; }
+  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px 10px; animation: fadeDown .5s ease both; }
+  .brand { font-family: 'Space Grotesk', sans-serif; font-size: 1.45rem; font-weight: 700; letter-spacing: .08em; background: linear-gradient(90deg, var(--teal-dark), var(--teal-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+ 
+  .welcome { padding: 4px 22px 18px; animation: fadeDown .55s .08s ease both; }
+  .welcome p { font-size: .8rem; color: var(--text-sub); margin-bottom: 1px; }
+  .welcome h2 { font-size: 1.22rem; font-weight: 700; }
+  .balance-card { margin: 0 16px 20px; border-radius: var(--radius-card); background: linear-gradient(145deg, var(--teal-dark) 0%, var(--teal-mid) 55%, var(--teal-bright) 100%); padding: 26px 22px 22px; color: #fff; position: relative; overflow: hidden; box-shadow: 0 12px 40px rgba(13,61,56,0.32); animation: fadeUp .6s .1s ease both; }
+  .balance-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(35,194,174,0.25), transparent 70%); animation: orbPulse 3.5s ease-in-out infinite; }
+  .balance-card::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(245,200,66,0.12), transparent 70%); animation: orbPulse 4.2s 1s ease-in-out infinite; }
+  .acct-label { font-size: .80rem; opacity: .7; letter-spacing:.04em; margin-bottom:3px; }
+  .acct-num { font-size: .95rem; font-weight:600; letter-spacing:.08em; margin-bottom:16px; }
+  .bal-label { font-size: .75rem; opacity: .7; margin-bottom:2px; }
+  .bal-amount { font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; font-weight: 700; letter-spacing: -.02em; line-height: 1; margin-bottom: 18px; }
+  .bal-amount span { font-size: 1.4rem; opacity: .8; }
+  .currency-row { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.10); border-radius: 14px; padding: 10px 14px; margin-bottom: 18px; }
+  .cur-item { display: flex; flex-direction: column; align-items: center; flex:1; }
+  .cur-label { font-size: .72rem; opacity: .7; }
+  .cur-val { font-size: .9rem; font-weight:600; }
+  .toggle-track { width: 48px; height: 26px; border-radius: 13px; background: rgba(255,255,255,.18); position: relative; cursor: pointer; border: 1.5px solid rgba(255,255,255,.3); transition: background var(--transition); flex-shrink: 0; }
+  .toggle-track.on { background: var(--accent); }
+  .toggle-thumb { width: 20px; height: 20px; border-radius: 50%; background: #fff; position: absolute; top: 2px; left: 2px; transition: transform var(--transition); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+  .toggle-track.on .toggle-thumb { transform: translateX(22px); }
+  .add-funds-btn { width: 100%; padding: 14px; border-radius: 14px; border: none; background: linear-gradient(135deg, var(--accent), var(--teal-glow)); color: var(--teal-dark); font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 700; letter-spacing: .06em; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; overflow: hidden; transition: transform var(--transition), box-shadow var(--transition), filter var(--transition); box-shadow: 0 6px 20px rgba(35,194,174,0.4); }
+  .add-funds-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%); transform: translateX(-100%); transition: transform 0s; }
+  .add-funds-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(35,194,174,0.55); filter: brightness(1.05); }
+  .add-funds-btn:hover::after { transform: translateX(100%); transition: transform 0.55s ease; }
+  .add-funds-btn:active { transform: scale(.97) translateY(0); box-shadow: 0 4px 12px rgba(35,194,174,0.35); }
+  .plus-icon { width: 22px; height: 22px; background: rgba(13,61,56,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; line-height:1; font-weight:700; }
+  .section-title { padding: 4px 22px 12px; font-size: 1rem; font-weight: 700; animation: fadeUp .5s .18s ease both; }
+  .actions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 16px; margin-bottom: 22px; animation: fadeUp .55s .22s ease both; }
+  .action-btn { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 6px 12px; border-radius: 16px; background: var(--surface); border: 1.5px solid #E2EDEB; cursor: pointer; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition); box-shadow: var(--shadow-card); position: relative; overflow: hidden; }
+  .action-btn::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(35,194,174,0.18) 0%, transparent 70%); opacity: 0; transition: opacity var(--transition); }
+  .action-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(13,61,56,0.14); border-color: var(--teal-glow); background: #F5FFFD; }
+  .action-btn:hover::after { opacity: 1; }
+  .action-btn:active { transform: scale(.93); box-shadow: var(--shadow-card); }
+  .action-icon { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #E8F7F5, #C8EDEA); display: flex; align-items: center; justify-content: center; transition: background var(--transition); }
+  .action-btn:hover .action-icon { background: linear-gradient(135deg, var(--teal-glow), var(--accent)); }
+  .action-icon svg { width: 20px; height: 20px; stroke: var(--teal-mid); stroke-width: 1.8; fill: none; transition: stroke var(--transition); }
+  .action-btn:hover .action-icon svg { stroke: #fff; }
+  .action-label { font-size: .78rem; font-weight: 600; color: var(--text-sub); text-align: center; line-height: 1.2; }
+  .txn-section { padding: 0 16px 100px; animation: fadeUp .6s .28s ease both; }
+  .txn-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .txn-header h3 { font-size: 1rem; font-weight: 700; }
+  .txn-header a { font-size: .78rem; color: var(--teal-bright); font-weight: 600; text-decoration: none; }
+  .txn-header a:hover { text-decoration: underline; }
+  .txn-table { background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); overflow: hidden; border: 1.5px solid #E2EDEB; }
+  .txn-head { display: grid; grid-template-columns: 90px 1fr 60px 80px; padding: 10px 14px; background: #F0F7F6; border-bottom: 1.5px solid #E2EDEB; }
+  .txn-head span { font-size: .7rem; font-weight: 700; color: var(--text-sub); letter-spacing:.04em; text-transform:uppercase; }
+  .txn-row { display: grid; grid-template-columns: 90px 1fr 60px 80px; padding: 13px 14px; align-items: center; border-bottom: 1px solid #F0F5F4; transition: background var(--transition); cursor: default; animation: slideInRow .4s ease both; }
+  .txn-row:last-child { border-bottom: none; }
+  .txn-row:hover { background: #F5FFFD; }
+  .txn-time { font-size: .73rem; color: var(--text-sub); font-weight: 500; }
+  .txn-recip { font-size: .72rem; color: var(--text-main); font-weight:500; word-break:break-all; }
+  .txn-amt { font-size: .78rem; font-weight: 700; color: var(--teal-mid); }
+  .txn-badge { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: .65rem; font-weight: 700; background: #D1FAE5; color: #065F46; }
+  .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; display: flex; justify-content: space-around; align-items: center; padding: 12px 20px 20px; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-top: 1px solid #E2EDEB; z-index: 100; }
+  @media (min-width: 768px) { .bottom-nav { border-radius: 0 0 36px 36px; bottom: 40px; } }
+  .nav-btn { width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; background: var(--bg); transition: transform var(--transition), box-shadow var(--transition), background var(--transition); box-shadow: 0 3px 10px rgba(13,61,56,0.10); }
+  .nav-btn.center { background: linear-gradient(135deg, var(--teal-mid), var(--teal-bright)); width: 58px; height: 58px; box-shadow: 0 8px 24px rgba(26,138,124,0.45); }
+  .nav-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(13,61,56,0.18); }
+  .nav-btn.center:hover { box-shadow: 0 12px 28px rgba(26,138,124,0.55); }
+  .nav-btn:active { transform: scale(.9); }
+  .nav-btn svg { width:24px; height:24px; stroke: var(--teal-mid); stroke-width:1.8; fill:none; }
+  .nav-btn.center svg { stroke: #fff; }
+  #toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--teal-dark); color: #fff; padding: 10px 20px; border-radius: 30px; font-size: .82rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 200; white-space: nowrap; box-shadow: 0 8px 24px rgba(13,61,56,0.35); }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  @keyframes fadeDown { from { opacity:0; transform: translateY(-16px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes orbPulse { 0%,100% { transform: scale(1); opacity:.7; } 50% { transform: scale(1.18); opacity:1; } }
+  @keyframes slideInRow { from { opacity:0; transform: translateX(-12px); } to { opacity:1; transform: translateX(0); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+</style>		
+		
+		
+		
 	<style>	
+ 
+.input {
+  max-width: 190px;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+  outline: none;
+  color: dimgray;
+}
+
+.input:invalid {
+  animation: justshake 0.3s forwards;
+  color: red;
+}
+
+@keyframes justshake {
+  25% {
+    transform: translateX(5px);
+  }
+
+  50% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX-(5px);
+  }
+}	
+	
+	
+	
+	
 	.grid-photo {margin:3px -7px;}
 
 .grid-photo li {position: relative; background: #ebcceb; display:block; float:left; width: 5%; height: 10%; padding-bottom: 1%; border: 2px solid purple;}
@@ -77,7 +206,6 @@
 @media only screen and (max-width : 320px) {
     .grid-photo1 li {width: 30%; padding-bottom: 5%;}
 }
-	
 
 
 .dgrid-photo .grid-photo-box {position: relative;right: 10px;right: 3px;top: 3px;bottom: 3px; background-color: rgba(128,128,128,0.2);}
@@ -134,19 +262,19 @@ tr:nth-child(odd) {
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
   writing-mode: vertical-lr;
   inline-size: fit-content;
-  top: 130px;
-  width:50px;height:150px;
+  top: 10px;
+  width:40px;height:40px;
   overflow: auto;
-  left: 6px;
+  right: 6px;
   text-align: center;
-  background: #d672a4;
+  background: #grey;
   //background: #eeeef; /* Black see-through */
   //color: #d672a4;
   color: white;
   font-size: 14px;
   border: 1px solid #555;
-  border-color:pink;
-  border-radius: 5%;
+  border-color:green;
+  border-radius: 50%;
 }
 
 .summarygrid{width:95%;
@@ -158,6 +286,19 @@ border: 1px solid #555;
   border-radius: 5%;  
   right: 10px;background: #969096;
 }
+
+
+.quadpaybox{width:95%;
+
+
+
+border: 1px solid #555;
+  border-color:grey;
+   
+  right: 10px;background: #969096;
+}
+
+
 
 
  	.bottom-left {
@@ -242,13 +383,10 @@ border: 1px solid #555;
 .dgrid-photo-center {
   position: relative;
   bottom: 20px;
-  width:90%;height:50%;
+  width:90%;height:30%;
   overflow: auto;
   left: 5%;
-  background: grey;
-  background: #fee4ed; /* Black see-through */
-  color: blue;
-  
+ 
   border: 1px solid #555;
   border-color:pink;
   border-radius: 10px;
@@ -256,7 +394,7 @@ border: 1px solid #555;
   
   text-align: right;
 }
-.dgrid-photo-center li {left: 20px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);  position: relative; background: #ece4ed; padding-side: 8%; display:block; width: 90%; height: 27%; padding-bottom: 7%; padding-top: 3%; border: 1px solid blue;  text-align: right;font-size: 9px; bottom: 4px; border-radius: 10px; }
+.dgrid-photo-center li {left: 20px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);  position: relative; background: #dce4ed; padding-side: 8%; display:block; width: 90%; height: 27%; padding-bottom: 7%; padding-top: 3%; border: 1px solid blue;  text-align: right;font-size: 9px; bottom: 4px; border-radius: 10px; }
 
 
 #overlay {
@@ -292,10 +430,7 @@ border: 1px solid #555;
 <body>	
     <div>
        
-        <h1  style="
-  position: relative;
-   /* Black see-through */
-  color: #f5c6e7;font-size:16px;">WISHVILLE</h1>		
+       		
         <div class="flex-container" style="position: relative;
   
   background: #e8d1c1; /* Black see-through */
@@ -306,49 +441,75 @@ border: 1px solid #555;
   border: 1px solid #555;
   border-color:pink;
   border-radius: 5%;">
-         <div href="#main"><span></span><span></span><p style="font-size:15px; font-family:Arial, Helvetica, sans-serif; text-align:left; color:green;" id="name"></p>
-        <div href="#main"><span></span><span></span><p style="font-size:15px; font-family:Arial, Helvetica, sans-serif; text-align:right; color:blue;" id="RegN0"></p>
-        <p  style="font-size:8px; font-family:Times New Roman, Times, serif; text-align:right; color:red;font-style: italic;" id="disz">pls update your info to validate your acc.</p>
-    	</div >
-    	<div id="dollarView" name ="dollarView"></div>
-	  <div id="quadpaybalance" style="font-size:30px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </div> 
+        <div href="#main"><div class="topbar">
+      <span class="brand">WISHVILLE</span>
+    <button class="avatar-btn" onclick="showToast('Profile')">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+  </div>
+  <div class="welcome">
+    
+    <h2 id="name"></h2>
+  </div>  
+    
     	
-    	<a  >
-	  <input type='button' class='btn-success' value="ADD FUND"  data-toggle='modal'  data-target='#addfund'> </a>
+    <div class="balance-card">
+    <div class="acct-label">Account Number</div>
+    <p  style="font-size:10px; font-family:Times New Roman, Times, serif; text-align:right; color:white;font-style: italic;" id="disz">pls update your info to validate your acc.</p>
+    <div class="acct-num" id="RegN0"></div>
+    <div class="bal-label">Current Balance</div>
+    <div class="bal-amount" ><span id="quadpaybalance"></span></div>
+    
+    <button class="add-funds-btn" data-toggle='modal'  data-target='#addfund' onclick="handleAddFunds()">ADD FUNDS <span class="plus-icon">+</span></button>
+  </div>
+  
+  
+	 
+	 
+	 
+	 
+	  <div class="actions-grid">
+    <button class="action-btn" data-toggle='modal'  data-target='#quadpaycenter1' onclick="showToast('Airtime')">
+      <div class="action-icon"  id='quadpayairtime'><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-linecap="round" stroke-width="2.5"/></svg></div>
+      <span class="action-label">Airtime</span>
+    </button>
+    <button class="action-btn" data-toggle='modal'  data-target='#quadpaycenter2' onclick="showToast('Data')">
+      <div class="action-icon"   id='quadpayairtimedata'><svg viewBox="0 0 24 24"><path d="M1.5 8.5C5 4.5 10 2 12 2s7 2.5 10.5 6.5"/><path d="M5 12c1.8-2.2 4.3-3.5 7-3.5s5.2 1.3 7 3.5"/><path d="M8.5 15.5c.9-1.1 2.1-1.8 3.5-1.8s2.6.7 3.5 1.8"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+      <span class="action-label">Data</span>
+    </button>
+    <button class="action-btn"   data-toggle='modal'  data-target='#quadpaycenter3' onclick="showToast('Power')">
+      <div class="action-icon" id='quadpaylight'><svg viewBox="0 0 24 24"><path d="M13 2L4.09 12.96A1 1 0 0 0 5 14.5h5.5L11 22l8.91-10.96A1 1 0 0 0 19 9.5H13.5L13 2z"/></svg></div>
+      <span class="action-label">Power</span>
+    </button>
+    <button class="action-btn"  data-toggle='modal'  data-target='#quadpaycenter4' onclick="showToast('Cable')">
+      <div class="action-icon" id='quadpaycable'><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12.01" y2="12" stroke-linecap="round" stroke-width="2.5"/></svg></div>
+      <span class="action-label">Cable</span>
+    </button>
+    <button class="action-btn" data-toggle='modal'  data-target='#quadpaycenter5' onclick="showToast('Internet')">
+      <div class="action-icon"   id='Internet'><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <span class="action-label">Internet</span>
+    </button>
+    <button class="action-btn" data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()' >
+      <div class="action-icon" onclick="showToast('Data+')" id='Cheapdata'><svg viewBox="0 0 24 24"><path d="M1.5 8.5C5 4.5 10 2 12 2s7 2.5 10.5 6.5"/><path d="M5 12c1.8-2.2 4.3-3.5 7-3.5s5.2 1.3 7 3.5"/><line x1="12" y1="17" x2="12" y2="23"/><line x1="9" y1="20" x2="15" y2="20"/></svg></div>
+      <span class="action-label">Data+</span>
+    </button>
+    <button class="action-btn" onclick = "quadpaytransfer()" data-toggle='modal'  data-target='#quadpaydata'>
+      <div class="action-icon" id='bankTrsfer' onclick="showToast('Bank Transfer')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="12" width="6" height="9"/></svg></div>
+      <span class="action-label">Bank-T</span>
+    </button>
+    <button class="action-btn" onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata'>
+      <div class="action-icon" onclick="showToast('In App')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6m-3-3v6"/></svg></div>
+      <span class="action-label">In APP</span>
+    </button>
+  </div>
 	  
-	  <div id="quadpayin"  class='quadpaybox1' >
-			<div class='grid-photo1' style='background-color:white;color:black;opacity:2;'      id='quadpayairtime'><li>
-			   
-			    <button   data-toggle='modal'  data-target='#quadpaycenter1'>Airtime</button></li></div>
-			    
-			<div class='grid-photo1' style='background-color:brown;color:black;opacity:2;'     id='quadpayairtimedata'><li>
-			    
-			    <button    data-toggle='modal'  data-target='#quadpaycenter2'>Data</button></li></div>
-			    
-		<div class='grid-photo1' style='background-color:lilac;color:black;opacity:2;'     id='quadpaylight'><li>
-			    
-			    <button   data-toggle='modal'  data-target='#quadpaycenter3'>Power</button></li></div>
-		<div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='quadpaycable'><li>
-			    
-			    <button   data-toggle='modal'  data-target='#quadpaycenter4'>Cable</button></li></div>
-			<div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Internet'><li>
-			    
-			    <button   data-toggle='modal'  data-target='#quadpaycenter5'>Internet</button></li></div>
-			 <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Cheapdata'><li>
-			    
-			    <button  data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'>Data+</button></li></div>
-			 <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='Transfer'><li>
-			    
-			    <button  onclick = "quadpaytransfer()" data-toggle='modal'  data-target='#quadpaydata'>Bank-T</button></li></div>
-			    <div class='grid-photo1' style='background-color:grey;color:black;opacity:2;'     id='WalletTrsfer'><li>
-			    
-			    <button onclick = "quadpayINtransfer()" data-toggle='modal'  data-target='#quadpaydata'>In APP</button></li></div>
-			   <br>
-			</div>
 	  
-	 <p id="grandtotal" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p>
+	 
 	  <div id="savingsdisplay" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </div>
+	  
+	  <p id="grandtotal" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
 </div>
+      
 	    <script>
 	  
 	  $(document).ready(function() {
@@ -436,7 +597,7 @@ border: 1px solid #555;
          var devicee = devr;
         var code = decodeURI(getUrlVars()["code"]);
     $.ajax({
-      url  : "https://designsandsystems.com.ng/wish/fetch_me.php",
+      url  : "fetch_me.php",
       type : "GET",
       cache: false,
       data : {myemail:myemail,device:devicee,code:code},
@@ -498,7 +659,7 @@ border: 1px solid #555;
      }
      else{document.getElementById('disz').style.display ='block';
      document.getElementById("RegN0").innerHTML ="acc_id :"+TRUE_Reg+"  " ;}
-           }
+          }
         
       }
     });}
@@ -527,7 +688,7 @@ border: 1px solid #555;
           window.location.replace('login.html');
           $("#confirmdevice_error").modal('hide');
         //$("#dataserv").html(data);alert(data);localStorage.setItem("code", data);
-        }else{alert("WRONG code/device PLEASE RE-login");
+        }else{alert("WRONG code/device PLEASE RElogin");
           window.location.replace('login.html');}
         
        
@@ -794,47 +955,47 @@ function success(position) {
 	if(time<=1){var rate = 5/100;
 	 total= price * (Math.pow((1 + rate), (time/12)));
 	        var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       
 	       else if(time == '2' ||time=='3' ||time=='4' ){var rate = 10/100;
 	total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       
 	       else if(time == '5' ||time=='6' ){var rate = 15/100;
 	 total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();      
-	        document.getElementById("grandprice").innerHTML ="n"+CI;}
+	        document.getElementById("grandprice").innerHTML ="N"+CI;}
 	        
 	       else if(time == '7' ||time=='8' ||time=='9' ){var rate = 20/100;
 	 total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       
 	       else if(time == '10' ||time=='11' ||time=='12' ){var rate = 25/100;
 	 total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       
 	       else if(time =='24' ){var rate = 35/100;
 	 total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       
 	       else if(time =='36' ){var rate = 45/100;
 	 total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       
 	       else if(time =='48' ){var rate = 50/100;
 	 total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       
 	       else if(time =='60' ){var rate = 70/100;
 	 total = price * (Math.pow((1 + rate), (time/12)));
 	 var CI = total.toFixed();
-	       document.getElementById("grandprice").innerHTML ="n"+CI;}
+	       document.getElementById("grandprice").innerHTML ="N"+CI;}
 	       OnChange2(value);
         var samout = $("#samout").val(CI);
     }	
@@ -993,8 +1154,8 @@ function success(position) {
                     success: function(data) {//alert(data);
                         if (data == "success") {
                             fetchData();payWithPaystack(); 
-                    $("#fixed_add").animate({height:["toggle","swing" ], width:["toggle","swing" ]}, {duration:5000, easing:"linear"});
-        $("#fixed_add").modal('hide');
+                    
+       
                             
                             //alert("submited");
                             $("#submit2").val("submited");
@@ -1060,12 +1221,12 @@ function success(position) {
         //$("#editForm").html(data);
       }
     });
-      fetchData();
+      fetchData(); $("#fixed_add").modal('hide');
          // alert('success. transaction ref is ' + response.reference);
-          alert('SUCCESS. transaction  is ' + response.status);
+          alert('SUCCESS. transaction  is ' + response.status);document.querySelector("fixed_add").style.display = 'none';
       },
       onClose: function(){//if(confirm("do you want to council the transaction"))
-          alert('window closed, UNCOMPLETED transaction');
+          alert('window closed, UNCOMPLETED transaction'); 
       },
       //plan:ta ,
       label: "wishville",
@@ -1180,7 +1341,7 @@ function success(position) {
                         $("#addfund").text('wait..');
                     },
                     success: function(data) {fetchData();payWithPaystack3();
-                    $("#fixed_add").animate({height:["toggle","swing" ], width:["toggle","swing" ]}, { easing:"linear"});
+                    
         $("#fixed_add").modal('hide');
         //alert(data);
                         if (data == "success") {
@@ -1248,7 +1409,7 @@ function success(position) {
           alert('SUCCESSFUL. transaction  is ' + response.status);
       },
       onClose: function(){//if(confirm("do you want to council the transaction"))
-          alert('window closed, UNCOMPLETED transaction');
+           $("#fixed_add").modal('hide'); alert('window closed, UNCOMPLETED transaction');
       },
       plan:ta ,
       label: "wishville",
@@ -1610,7 +1771,7 @@ function success(position) {
     var fluterquad_amount = 100; 
     var fluterquad_trxn  = "17864429831";
     $.ajax({
-      url : "https://designsandsystems.com.ng/quadpayFLUTERverify.php",
+      url : "https://designsandsystems.com.ng/wish/quadpayFLUTERverify.php",
       type : "POST",
       cache: false,
       data : {mmail:mailm,trans_id:fluterquad_trxn,fluterquadamount:fluterquad_amount},
@@ -1646,7 +1807,7 @@ function success(position) {
     var mailm = decodeURI(getUrlVars()["nemail"]);
     
     $.ajax({
-      url : "quadpayFLUTERverify.php",
+      url : "https://designsandsystems.com.ng/wish/quadpayFLUTERverify.php",
       type : "POST",
       cache: false,
       data : {mmail:mailm,trans_id:fluterquad_trxn,fluterquadamount:fluterquad_amount},
@@ -1706,18 +1867,10 @@ function success(position) {
            <p id="loading"></p>
         
          </div>
-        	<a  ><span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-	  <input type='button' class='btn-success' value="WISHVILLE"  data-toggle='modal'  data-target='#fixed_add'> </a>
-	  <span></span><span></span>
-	  	<a  ><span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-	  <input type='button' class='btn-fail' value="QUADPAY"  data-toggle='modal'  data-target='#fundquadpay'> </a>
-	  <span></span><span></span>
+        	
+	  <div><button class='btn sucess' style='background-color:teal;opacity:2;color:white;'   data-toggle='modal'  data-target='#fixed_add'>WISHVILLE </button><br><br>
+	  <button  class='btn sucess' style='background-color:seagreen;opacity:2;color:black;'   data-toggle='modal'  data-target='#fundquadpay'> QUADPAY</button></div>
+	  
 	  <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
@@ -1733,7 +1886,7 @@ function success(position) {
         <div id="fundplace"  class="modal-body">
            <p id="loading"></p>
         </div>
-         <span>PLEASE UPLOAD AMOUNT</span>
+         <span> AMOUNT</span>
         <INPUT TYPE = "number"  name = "quadupload_amountVALUE" id="quadupload_amountVALUE" value =""   style="width:60%; height:20px;color:black;"  >
 	<br>
       <br><div name='future'  id='future'>
@@ -1998,11 +2151,8 @@ function success(position) {
               </select>
           <div >password</div>
 			<input type='password' style='background-color:white;color:black;opacity:2;width:90%;'   placeholder='password' name='quadpayloginpassword' id='quadpayloginpassword' required=""/>
-          <a><span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-	  <input type='button' onclick='quadpay()' data-toggle='modal'  data-target='#quadpaydata'   class='btn-success' value="submit" > </a>
+          <div>
+	  <button  onclick='quadpay()' data-toggle='modal'  data-target='#quadpaydata'   class='btn-success'>submit </button></div>
 	   </div>
         </div>
         <div class="modal-footer">
@@ -2071,19 +2221,19 @@ function success(position) {
 			 <input type='hidden' id='billnamecode'>
 			 <input type='hidden' id='billername'>
 			<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:yellow;' ><li><div   style='background-color:white;color:yellow;'>
-			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://designsandsystems.com.ng/wish/Logo/Mtn.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099m' value="mtn" >
+			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/Mtn.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099m' value="mtn" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata' ><li><div  style='background-color:white;color:green;'>
-			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://designsandsystems.com.ng/wish/Logo/Glo.jfif"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099g' value="glo" >
+			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/Glo.jfif"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099g' value="glo" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'><li><div  style='background-color:white;color:red;' >
-			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://designsandsystems.com.ng/wish/Logo/Airtel.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099a' value="airtel" >
+			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/Airtel.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099a' value="airtel" >
 			   </div></li></div>
 			   
 		<div class='grid-photo' onclick = "quadpaybillairtime()"  data-toggle='modal'  data-target='#quadpaydata'><li><div  style='background-color:white;color:green;' >
-			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="https://designsandsystems.com.ng/wish/Logo/9mobile.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099mo' value="9 mobile" >
+			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybillairtime()"  src="Logo/9mobile.png"  ><input type='hidden' id='BILL099' value="BIL099" ><input type='hidden' id='BILL099mo' value="9 mobile" >
 			   </div></li></div>
 			
 			 </div>
@@ -2109,18 +2259,18 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybilldatamtn()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:yellow;' >
-			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamtn()"  src="https://designsandsystems.com.ng/wish/Logo/Mtn.png"  ><input type='hidden' id='BILL108' value="BIL108" ><input type='hidden' id='BILL108m' value="mtn" >
+			    mtn<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamtn()"  src="Logo/Mtn.png"  ><input type='hidden' id='BILL108' value="BIL108" ><input type='hidden' id='BILL108m' value="mtn" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybilldataglo()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:green;' >
-			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybilldataglo()"  src="https://designsandsystems.com.ng/wish/Logo/Glo.jfif"  ><input type='hidden' id='BILL109' value="BIL109" ><input type='hidden' id='BILL109g' value="glo" >
+			    glo<img style='width:90%;height:75px;'  onclick = "quadpaybilldataglo()"  src="Logo/Glo.jfif"  ><input type='hidden' id='BILL109' value="BIL109" ><input type='hidden' id='BILL109g' value="glo" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybilldataairtel()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:red;' >
-			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybilldataairtel()"  src="https://designsandsystems.com.ng/wish/Logo/Airtel.png"  ><input type='hidden' id='BILL110' value="BIL110" ><input type='hidden' id='BILL110a' value="airtel" >
+			    airtel<img style='width:90%;height:75px;'  onclick = "quadpaybilldataairtel()"  src="Logo/Airtel.png"  ><input type='hidden' id='BILL110' value="BIL110" ><input type='hidden' id='BILL110a' value="airtel" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybilldatamobile()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div  style='background-color:white;color:green;' >
-			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamobile()"  src="https://designsandsystems.com.ng/wish/Logo/9mobile.png"  ><input type='hidden' id='BILL111' value="BIL111" ><input type='hidden' id='BILL111mo' value="9 mobile" >
+			    9 mobile<img style='width:90%;height:75px;'  onclick = "quadpaybilldatamobile()"  src="Logo/9mobile.png"  ><input type='hidden' id='BILL111' value="BIL111" ><input type='hidden' id='BILL111mo' value="9 mobile" >
 			   </div></li></div>
 			
 			 </div>
@@ -2145,35 +2295,35 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybillpower1()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    abuja disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower1()"  src="https://designsandsystems.com.ng/wish/Logo/Electrcaedc.png"  ><input type='hidden' id='BIL204abj' value="abuja disco" >
+			    abuja disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower1()"  src="Logo/Electrcaedc.png"  ><input type='hidden' id='BIL204abj' value="abuja disco" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillpower2()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    ikdc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower2()"  src="https://designsandsystems.com.ng/wish/Logo/Electrciek.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ik' value="ikdc" >
+			    ikdc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower2()"  src="Logo/Electrciek.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ik' value="ikdc" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillpower3()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    ibadan disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower3()"  src="https://designsandsystems.com.ng/wish/Logo/Electrciban.png"  ><input type='hidden' id='BIL112' value="BIL112" ><input type='hidden' id='BIL112ib' value="ibadan disco" >
+			    ibadan disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower3()"  src="Logo/Electrciban.png"  ><input type='hidden' id='BIL112' value="BIL112" ><input type='hidden' id='BIL112ib' value="ibadan disco" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillpower4()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    enugu disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower4()"  src="https://designsandsystems.com.ng/wish/Logo/Electrceec.png"  ><input type='hidden' id='BIL115' value="BIL115" ><input type='hidden' id='BIL115en' value="enugu disco" >
+			    enugu disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower4()"  src="Logo/Electrceec.png"  ><input type='hidden' id='BIL115' value="BIL115" ><input type='hidden' id='BIL115en' value="enugu disco" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillpower5()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    phc disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower5()"  src="https://designsandsystems.com.ng/wish/Logo/Electrcph.png"  ><input type='hidden' id='BIL114' value="BIL114" ><input type='hidden' id='BIL114ph' value="phc disco" >
+			    phc disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower5()"  src="Logo/Electrcph.png"  ><input type='hidden' id='BIL114' value="BIL114" ><input type='hidden' id='BIL114ph' value="phc disco" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillpower6()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    benin disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower6()"  src="https://designsandsystems.com.ng/wish/Logo/Electrcben.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ben' value="benin disco" >
+			    benin disco<img style='width:90%;height:75px;'  onclick = "quadpaybillpower6()"  src="Logo/Electrcben.png"  ><input type='hidden' id='BIL117' value="BIL117" ><input type='hidden' id='BIL117ben' value="benin disco" >
 			   </div></li></div>
 	
 		   
 	<div class='grid-photo' onclick = "quadpaybillpower8()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    kaduna<img style='width:90%;height:75px;'  onclick = "quadpaybillpower8()"  src="https://designsandsystems.com.ng/wish/Logo/Electrckd.png"  ><input type='hidden' id='BIL119' value="BIL119" ><input type='hidden' id='BIL119kd' value="kaduna" >
+			    kaduna<img style='width:90%;height:75px;'  onclick = "quadpaybillpower8()"  src="Logo/Electrckd.png"  ><input type='hidden' id='BIL119' value="BIL119" ><input type='hidden' id='BIL119kd' value="kaduna" >
 			   </div></li></div>		   
 	<div class='grid-photo' onclick = "quadpaybillpower9()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    kano<img style='width:90%;height:75px;'  onclick = "quadpaybillpower9()"  src="https://designsandsystems.com.ng/wish/Logo/Electrciba.png"  ><input type='hidden' id='BIL120' value="BIL120" ><input type='hidden' id='BIL120kn' value="kano" >
+			    kano<img style='width:90%;height:75px;'  onclick = "quadpaybillpower9()"  src="Logo/Electrciba.png"  ><input type='hidden' id='BIL120' value="BIL120" ><input type='hidden' id='BIL120kn' value="kano" >
 			   </div></li></div>		   
 		<div class='grid-photo' onclick = "quadpaybillpower10()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    ekedc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower10()"  src="https://designsandsystems.com.ng/wish/Logo/Electrcekee.png"  ><input type='hidden' id='BIL116' value="BIL116" ><input type='hidden' id='BIL116ek' value="ekedc" >
+			    ekedc<img style='width:90%;height:75px;'  onclick = "quadpaybillpower10()"  src="Logo/Electrcekee.png"  ><input type='hidden' id='BIL116' value="BIL116" ><input type='hidden' id='BIL116ek' value="ekedc" >
 			   </div></li></div>	
 			 </div>
 			    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -2197,18 +2347,18 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybillcableg()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    gotv<img style='width:90%;height:75px;'  onclick = "quadpaybillcableg()"  src="https://designsandsystems.com.ng/wish/Logo/Gotv.png"  ><input type='hidden' id='BIL122' value="BIL122" ><input type='hidden' id='BIL122g' value="gotv" >
+			    gotv<img style='width:90%;height:75px;'  onclick = "quadpaybillcableg()"  src="Logo/Gotv.png"  ><input type='hidden' id='BIL122' value="BIL122" ><input type='hidden' id='BIL122g' value="gotv" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillcabled()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    dstv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablegd()"  src="https://designsandsystems.com.ng/wish/Logo/Dstv.jfif"  ><input type='hidden' id='BIL121' value="BIL121" ><input type='hidden' id='BIL121d' value="dstv" >
+			    dstv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablegd()"  src="Logo/Dstv.jfif"  ><input type='hidden' id='BIL121' value="BIL121" ><input type='hidden' id='BIL121d' value="dstv" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillcables()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    startimes<img style='width:90%;height:75px;'  onclick = "quadpaybillcables()"  src="https://designsandsystems.com.ng/wish/Logo/Startimes.jfif"  ><input type='hidden' id='BIL123' value="BIL123" ><input type='hidden' id='BIL123s' value="startimes" >
+			    startimes<img style='width:90%;height:75px;'  onclick = "quadpaybillcables()"  src="Logo/Startimes.jfif"  ><input type='hidden' id='BIL123' value="BIL123" ><input type='hidden' id='BIL123s' value="startimes" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillcablef()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    freetv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablef()"  src="https://designsandsystems.com.ng/wish/Logo/Freetv.png"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124f' value="freetv" >
+			    freetv<img style='width:90%;height:75px;'  onclick = "quadpaybillcablef()"  src="Logo/Freetv.png"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124f' value="freetv" >
 			   </div></li></div>
 			
 			 </div>
@@ -2233,18 +2383,18 @@ function success(position) {
       <div id="quadpayin"  class="modal-body">
 			 
 			<div class='grid-photo' onclick = "quadpaybillinternets()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    smile<img style='width:90%;height:75px;'  onclick = "quadpaybillinternets()"  src="https://designsandsystems.com.ng/wish/Logo/Smile.jfif"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124s' value="smile" >
+			    smile<img style='width:90%;height:75px;'  onclick = "quadpaybillinternets()"  src="Logo/Smile.jfif"  ><input type='hidden' id='BIL124' value="BIL124" ><input type='hidden' id='BIL124s' value="smile" >
 			   </div></li></div>
 			    
 			<div class='grid-photo' onclick = "quadpaybillinternetm()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    mtnhynet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetm()"  src="https://designsandsystems.com.ng/wish/Logo/Mtn.png"  ><input type='hidden' id='BIL136' value="BIL136" ><input type='hidden' id='BIL136m' value="mtn hynet" >
+			    mtnhynet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetm()"  src="Logo/Mtn.png"  ><input type='hidden' id='BIL136' value="BIL136" ><input type='hidden' id='BIL136m' value="mtn hynet" >
 			   </div></li></div>
 			    
 		<div class='grid-photo' onclick = "quadpaybillinternetsp()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    spectranet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetsp()"  src="https://designsandsystems.com.ng/wish/Logo/Spectranet.jfif"  ><input type='hidden' id='BIL123' value="" ><input type='hidden' id='BIL123sp' value="spectranet" >
+			    spectranet<img style='width:90%;height:75px;'  onclick = "quadpaybillinternetsp()"  src="Logo/Spectranet.jfif"  ><input type='hidden' id='BIL123' value="" ><input type='hidden' id='BIL123sp' value="spectranet" >
 			   </div></li></div>
 		<div class='grid-photo' onclick = "quadpaybillinterneta()"  data-toggle='modal'  data-target='#quadpaydata'  style='background-color:white;color:black;opacity:2;' ><li><div>
-			    airtel dealer<img style='width:90%;height:75px;'  onclick = "quadpaybillinterneta()"  src="https://designsandsystems.com.ng/wish/Logo/Airtel.png"  ><input type='hidden' id='BIL128a' value="airtel dealer" >
+			    airtel dealer<img style='width:90%;height:75px;'  onclick = "quadpaybillinterneta()"  src="Logo/Airtel.png"  ><input type='hidden' id='BIL128a' value="airtel dealer" >
 			   </div></li></div>
 			
 			 </div>
@@ -2298,16 +2448,16 @@ function success(position) {
     <div class='modal-dialog'>
       <div class='modal-content' style='background-color:#e4eced;opacity:2;'>
         <div class='modal-header'>
-          <h4 class='modal-images' style="color: Black;height:5%;font-size: 20px;">SAVING SCHEME</h4>
+            <button type='button' style="color: red;font-size: 20px;" class='close' data-dismiss='modal'>&times;</button>
+          <h4 class='modal-images' style="color: Black;font-size: 20px;">SAVING SCHEME</h4>
 		  
-          <button type='button' style="color: red;height:5%;font-size: 50px;" class='close' data-dismiss='modal'>&times;</button><br>
         </div>
 		
 		<div class='modal-body'>
         <div id="editForm">
-            <label id="date" style="color: red;height:10%;font-size: 12px;"></label>
- <form NAME = "frmOne" method="post" action="plan.php">
-		<label id="nametr_id" style="color: Black;height:10%;font-size: 20px;">	</label>
+            <label id="date" style="color: red;font-size: 12px;"></label>
+ <form NAME = "frmOne">
+		<label id="nametr_id" style="color: Black;font-size: 14px;">	</label>
 		
 		<div style="
   position: relative;
@@ -2363,7 +2513,7 @@ function success(position) {
 				  <option value='48'>4 years(50%)P.A</option>
 				  <option value='60'>5 years(70%)P.A</option>
 				  </select><br> <br><br>
-     <span type="hidden" style="font-size:11px; font-family:Arial, Helvetica, sans-serif; text-align:left; line-height:17px;color:#000000;">Dear your anticipated sum is:  </span>
+     <span type="hidden" style="font-size:11px; font-family:Arial, Helvetica, sans-serif; text-align:left; line-height:17px;color:#000000;">Dear your anticipated sum is: &#8358; </span>
 	
 	<br></div>
 	<p id="grandprice" style="font-size:23px; font-family:Arial, Helvetica, sans-serif; line-height:24px;color:#000000;" >  </p> 
@@ -2371,16 +2521,16 @@ function success(position) {
 			
              <input type="hidden" onclick='test()' id="k" name="k" class="button button-block" value="test" data-toggle='modal'  data-target='#autopay' data-dismiss='modal' />
            <br>
-           <div >Purposes/Intentions</div>
+           <div >Tittle/Purposes</div>
            <br>
-			<input type='textarea' style='background-color:white;color:black;opacity:2;'  placeholder='your wishes: "buy house"' name='comment' id='comment'  required=""/>
-			<div id="submita"><a onclick='hide22()'><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' id="submit" class="button button-block" value="FIXED-FUND" /><span></span></a></div>
+			<input type='textarea' style='background-color:white;color:black;opacity:2;'  placeholder='your wishes: "buy house"' name='comment' id='comment'  required=""/><br><br>
+			<div id="submita"><button onclick='hide22()' class='btn sucess' style='background-color:seagreen;opacity:2;color:black;' id="submit"  >FIXED-FUND</button></div><br><br>
 			
-			<a id="key1b" ><span></span><span></span><input type="button" style='background-color:seagreen;opacity:2;color:black;' onclick='payWithPaystackq()'  id="submit2" class="button button-block" value="FIXED FUND"  /><span></span></a>
-			<a id="key3"><input type="button" id="key3a"  class='btn btn-danger btn-sm' style='opacity:2;' onclick='hide3()'  value="close" /></a>
+			<div id="key1b" ><button style='background-color:seagreen;opacity:2;color:black;' onclick='payWithPaystackq()'  id="submit2" class='btn sucess'  >FIXED FUND</button></div>
+			<div id="key3"><input type="button" id="key3a"  class='btn btn-danger btn-sm' style='opacity:2;' onclick='hide3()'  value="close" /></div>
 			
-			<div id="key1a"><a onclick='hide1()'><span></span><span></span>
-			<input type="button" style='background-color:lilac;opacity:2;color:black;' id="key1" class="button button-block" value="AUTO FUND" /><span></span></a></div>
+			<div id="key1a">
+			<button onclick='hide1()' style='background-color:teal;opacity:2;color:black;' id="key1" class='btn sucess' >AUTO FUND</button></div>
 			<br><br>
            <div id='paylater'> <div style="
   position: relative;
@@ -2396,13 +2546,13 @@ function success(position) {
   ><br>
 			<div class="item-title item-label" style="
   position: relative;
-  background: blue;
+  background: #de14f;
   color: white;
   font-size: 16px;
   border: 1px solid #555;
   border-color:brown;
    padding-top: 5%;
-  padding-bottom: 5%;"  > AUTO FUND</div><br><br>
+  padding-bottom: 2%;"  > AUTO FUND</div><br><br>
 			<div class="item-title item-label"> Number of Occurance</div>
 				  <select style='foreground-color:#428F6A;opacity:2;width:60%;' name='duration' id='duration1' onchange="OnChange2(this.value) "  required="" >
 				  <option value='0'>Number of Occurance</option>
@@ -2440,31 +2590,31 @@ function success(position) {
 		  <br><br>
 		
             <div id='confirm'></div>
-            <a><span></span><input type="" placeholder="addfund" id="addfund" name = "addfund" style="color: Black;width:150px;"  required="" readonly onclick='payWithPaystack2()' value="ADD FUND" ><span></span></a>
+            <button   id="addfund"    class='btn sucess' onclick='payWithPaystack2()'  >ADD FUND</button>
 			<input type="hidden" style='background-color:seagreen;opacity:2;' id="submit"  value="AUTO FUND" class="button button-block">
-			<a><input type="button" id="key2"  class='btn btn-danger btn-sm' style='opacity:2;' onclick='hide2()'  value="close" /></a>
+			<input type="button" id="key2"  class='btn btn-danger btn-sm' style='opacity:2;' onclick='hide2()'  value="close" />
 			</div>
 	</div></form>
        
-     </div></div> <button type='button' class='btn btn-danger btn-sm' data-dismiss='modal'>Close</button></div>  
+     </div></div> <button  class='btn btn-danger btn-sm' data-dismiss='modal'>Close</button></div>  
 
 	</div>
-	</div> <div><label style='background-color:brown;opacity:2;'> history</label></div>
+	</div> 
+	
+
  <div id ='summary' class='dgrid-photo-center' >	  
  
-</div> </div>  
+</div>   </div>
 
-<div id="overlay" >
-  <img src="loading.gif" id="img" >
-</div>	
+
 		
-<div id ='gall' class='bottom-left' data-toggle='modal'  data-target='#datalogin' onclick='fetchpassword()' data-id=''><img style='width:50px;height:50px;' src="https://designsandsystems.com.ng/wish/Left icon.jpg" id="img11" >
+<div id ='gall' class='bottom-left' data-toggle='modal'  data-target='#datalogin' onclick='fetchpassword()' data-id=''><img style='width:50px;height:50px;' src="Left icon.jpg" id="img11" >
 </div>
 <div class='bottom-left1'></div>
-<div id ='starcenter' class='bottom-left2' data-toggle='modal'  data-target='#starplace' onclick = 'fetchstarplace()'  ><img style='width:75px;height:75px;'  src="https://designsandsystems.com.ng/wish/Center.jpg" id="img5" ></div>
-<div id ='gally3' class='bottom-right' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  style=';'><img style='width:50px;height:50px;'  src="https://designsandsystems.com.ng/wish/Right icon.jpg" id="img2" >
+<div id ='starcenter' class='bottom-left2' data-toggle='modal'  data-target='#starplace' onclick = 'fetchstarplace()'  ><img style='width:75px;height:75px;'  src="Center.jpg" id="img5" ></div>
+<div id ='gally3' class='bottom-right' data-toggle='modal'   data-target='#quadpaylogin' onclick='fetchpasswordquadpay()'  style=';'><img style='width:50px;height:50px;'  src="Right icon.jpg" id="img2" >
 </div>
-<div id ='quadpaybutton' data-toggle='modal'   data-target='#quadpaycenter' class='top-right'   style=';'>quadpay</div>
+<div  data-toggle='modal'  data-target='#datalogin' id ='quadpaybutton' onclick='fetchpassword()' class='top-right'   src="Left icon.jpg">img</div>
 </div>
 
 <script type="application/javascript">
