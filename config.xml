@@ -2,7 +2,7 @@
 <widget id="com.example.WishVIlle" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>WishVIlle</name>
     <description>Save D' future</description>
-    <author email="lagreencon@Gmail.com" href="https://www.lagreen.designsandsystems.com.ng">
+    <author email="lagreencon@gmail.com" href="https://www.designsandsystems.com.ng">
         The Design team
     </author>
     <content src="index.html" />
