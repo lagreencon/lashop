@@ -1466,7 +1466,32 @@ function success(position) {
       }
     });
   }
+
+
+  function moreinfo(){
+    var Dmail = decodeURI(getUrlVars()["nemail"]);
+    var Ddevice  = $("#device").val();
+    var DLng1  = $("#myLng").val();
+    var DLat1  = $("#myLat").val();
+    var Dip  = $("#text2").val();
+    //alert(myLng1 );alert(myLat1);
+    $.ajax({
+      url : "https://designsandsystems.com.ng/wish/fetchmoreinfo.php",
+      type : "POST",
+      cache: false,
+      data : {Dmail:Dmail,Ddevice:Ddevice,DLng1:DLng1,DLat1:DLat1,Dip:Dip},
+      beforeSend:function() {
+                      
+                    },
+      success:function(data){
+       $("#moreinfo").html(data);
+      }
+    });
+  }
   
+
+
+	
   function loadSummary(){
     var SUM_mail = decodeURI(getUrlVars()["nemail"]);
     var SUM_device = $("#device").val();
